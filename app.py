@@ -12,8 +12,9 @@ def about():
 
 @app.route('/contacto')
 def contact():
-    return render_template('contacto.html')    
+    return render_template('contacto.html')
 
+        
 
 if __name__ == '__main__':
     app.run(debug=True)
