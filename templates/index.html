@@ -40,7 +40,9 @@
     <section class="container my-5">
       <div class="row text-center mb-4">
         <h2 class="fw-bold text-white">Nuestros Servicios</h2>
-        <p class="text-white">Ofrecemos una amplia gama de servicios, incluyendo:</p>
+        <p class="text-white">
+          Ofrecemos una amplia gama de servicios, incluyendo:
+        </p>
       </div>
       <div class="row g-4">
         <div class="col-md-4">
@@ -77,19 +79,18 @@
         </div>
       </div>
       <div class="col-md-12">
-  <div class="card h-100 shadow mt-4">
-    <div class="card-body">
-      <h5 class="card-title">Otros Servicios Especializados</h5>
-      <ul class="mb-0">
-        <li><strong>Facturación electrónica</strong></li>
-        <li><strong>Elaboración de estados financieros</strong></li>
-        <li><strong>Determinación y cálculo de impuestos</strong></li>
-        <li><strong>Regularización de obligaciones fiscales</strong></li>
-      </ul>
-    </div>
-  </div>
-</div>
-      
+        <div class="card h-100 shadow mt-4">
+          <div class="card-body">
+            <h5 class="card-title">Otros Servicios Especializados</h5>
+            <ul class="mb-0">
+              <li><strong>Facturación electrónica</strong></li>
+              <li><strong>Elaboración de estados financieros</strong></li>
+              <li><strong>Determinación y cálculo de impuestos</strong></li>
+              <li><strong>Regularización de obligaciones fiscales</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
     <!-- Testimonios -->
     <section class="container my-5">
@@ -145,60 +146,71 @@
     </section>
     <!-- Contacto -->
     <section class="container my-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card shadow">
-            <div class="card-body">
-              <h2 class="fw-bold mb-4 text-center">Contacto</h2>
-              <form>
-                <div class="mb-3">
-                  <label for="nombre" class="form-label">Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nombre"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label"
-                    >Correo electrónico</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="nombre@ejemplo.com"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="mensaje" class="form-label">Mensaje</label>
-                  <textarea
-                    class="form-control"
-                    id="mensaje"
-                    rows="4"
-                    placeholder="¿En qué podemos ayudarte?"
-                  ></textarea>
-                </div>
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">
-                    Enviar mensaje
-                  </button>
-                </div>
-              </form>
-              <div class="text-center mt-3">
-                <small
-                  >O escríbenos a
-                  <a href="mailto:servicioscontablesjme@gmail.com"
-                    >Despacho Fiscal y Contable SAM</a
-                  ></small
-                >
-              </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="fw-bold mb-4 text-center">Contacto</h2>
+          <form method="post">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+              />
             </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="nombre@ejemplo.com"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea
+                class="form-control"
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="¿En qué podemos ayudarte?"
+                required
+              ></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Enviar mensaje
+              </button>
+            </div>
+          </form>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <div class="text-center mt-3">
+            <small>
+              O escríbenos a
+              <a href="mailto:servicioscontablesjme@gmail.com">
+                servicioscontablesjme@gmail.com
+              </a>
+            </small>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
     <footer class="bg-dark text-white text-center py-3 mt-5">
       <small
         >© 2025 Despacho Fiscal y Contable SAM. Todos los derechos
