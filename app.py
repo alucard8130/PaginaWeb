@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_mail import Mail, Messageimp
+from flask_mail import Mail, Message, Messageimp
 import os
 from dotenv import load_dotenv
 
