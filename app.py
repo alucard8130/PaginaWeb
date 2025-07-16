@@ -46,9 +46,9 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contacto")
-def contact():
-    return render_template("contacto.html")
+# @app.route("/contacto")
+# def contact():
+#    return render_template("contacto.html")
 
 
 @app.route("/tec", methods=["GET", "POST"])
