@@ -2,21 +2,26 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/about')
+
+@app.route("/about")
 def about():
-    return render_template('about.html')    
+    return render_template("about.html")
 
-@app.route('/contacto')
+
+@app.route("/contacto")
 def contact():
-    return render_template('contacto.html')
+    return render_template("contacto.html")
 
-        
 
-if __name__ == '__main__':
+@app.route("/tec")
+def services():
+    return render_template("tec.html")
+
+
+if __name__ == "__main__":
     app.run(debug=True)
-
-
