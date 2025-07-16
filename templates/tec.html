@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -197,7 +197,7 @@
             <div class="row g-0">
               <div class="col-md-4 d-flex align-items-center">
                 <img
-                  src="/imagenes/contabilidad.jpg"
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80"
                   class="img-fluid w-100 rounded-start"
                   alt="Contabilidad"
                   style="height: 160px; object-fit: cover"
@@ -251,13 +251,15 @@
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
                 <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  src="https://randomuser.me/api/portraits/men/33.jpg"
                   class="testimonio-img me-3"
                   alt="Cliente 1"
                 />
                 <div>
-                  <h6 class="mb-0">Carlos Méndez</h6>
-                  <small class="text-muted">Director de Operaciones</small>
+                  <h6 class="mb-0">Roberto Zarate</h6>
+                  <small class="text-muted"
+                    >Gerente de Operaciones Centro Comercial</small
+                  >
                 </div>
               </div>
               <p class="card-text">
@@ -273,13 +275,13 @@
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
                 <img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  src="https://randomuser.me/api/portraits/women/64.jpg"
                   class="testimonio-img me-3"
                   alt="Cliente 2"
                 />
                 <div>
-                  <h6 class="mb-0">Laura Gómez</h6>
-                  <small class="text-muted">Contadora Pública</small>
+                  <h6 class="mb-0">Genesys Espiricueta</h6>
+                  <small class="text-muted">Socia despacho contable</small>
                 </div>
               </div>
               <p class="card-text">
@@ -295,12 +297,12 @@
             <div class="card-body">
               <div class="d-flex align-items-center mb-3">
                 <img
-                  src="https://randomuser.me/api/portraits/men/65.jpg"
+                  src="https://randomuser.me/api/portraits/men/15.jpg"
                   class="testimonio-img me-3"
                   alt="Cliente 3"
                 />
                 <div>
-                  <h6 class="mb-0">Javier Ruiz</h6>
+                  <h6 class="mb-0">Javier Blanquet</h6>
                   <small class="text-muted">Agente Inmobiliario</small>
                 </div>
               </div>
@@ -313,62 +315,78 @@
         </div>
       </div>
     </section>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
     <!-- Contacto -->
     <section class="container my-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card shadow">
-            <div class="card-body">
-              <h2 class="fw-bold mb-4 text-center">Contacto</h2>
-              <form>
-                <div class="mb-3">
-                  <label for="nombre" class="form-label">Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nombre"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label"
-                    >Correo electrónico</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="nombre@ejemplo.com"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="mensaje" class="form-label">Mensaje</label>
-                  <textarea
-                    class="form-control"
-                    id="mensaje"
-                    rows="4"
-                    placeholder="¿En qué podemos ayudarte?"
-                  ></textarea>
-                </div>
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">
-                    Enviar mensaje
-                  </button>
-                </div>
-              </form>
-              <div class="text-center mt-3">
-                <small
-                  >O escríbenos a
-                  <a href="mailto:codefullstack@infinitummail.com"
-                    >codefullstack@infinitummail.com</a
-                  ></small
-                >
-              </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="fw-bold mb-4 text-center">Contacto</h2>
+          <form method="post">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+              />
             </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="nombre@ejemplo.com"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea
+                class="form-control"
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="¿En qué podemos ayudarte?"
+                required
+              ></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Enviar mensaje
+              </button>
+            </div>
+          </form>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <div class="text-center mt-3">
+            <small>
+              O escríbenos a
+              <a href="mailto:codefullstack@infinitummail.com">
+                codefullstack@infinitummail.com
+              </a>
+            </small>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+    
     <footer class="bg-dark text-white text-center py-3 mt-5">
       <small
         >© 2025 Innovación & Tecnología. Todos los derechos reservados.</small
