@@ -19,40 +19,8 @@ app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
 
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
-        nombre = request.form["nombre"]
-        email = request.form["email"]
-        mensaje = request.form["mensaje"]
-
-        msg = Message(
-            subject="Información de contacto desde la web",
-            recipients=["servicioscontablesjme@gmail.com"],
-            body=f"Nombre: {nombre}\nEmail: {email}\nMensaje:\n{mensaje}",
-        )
-        try:
-            mail.send(msg)
-            flash("¡Mensaje enviado correctamente!", "success")
-        except Exception as e:
-            flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
-        return redirect(url_for("index"))
-    return render_template("index.html")
-
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-
-# @app.route("/contacto")
-# def contact():
-#    return render_template("contacto.html")
-
-
 @app.route("/tec", methods=["GET", "POST"])
-def tec():
+def index():
     if request.method == "POST":
         nombre = request.form["nombre"]
         email = request.form["email"]
@@ -68,8 +36,41 @@ def tec():
             flash("¡Mensaje enviado correctamente!", "success")
         except Exception as e:
             flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
+        return redirect(url_for("index"))
+    return render_template("index.html")
+
+@app.route("/", methods=["GET", "POST"])
+def tec():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        email = request.form["email"]
+        mensaje = request.form["mensaje"]
+
+        msg = Message(
+            subject="Información de contacto desde la web",
+            recipients=["servicioscontablesjme@gmail.com"],
+            body=f"Nombre: {nombre}\nEmail: {email}\nMensaje:\n{mensaje}",
+        )
+        try:
+            mail.send(msg)
+            flash("¡Mensaje enviado correctamente!", "success")
+        except Exception as e:
+            flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
         return redirect(url_for("tec"))
     return render_template("tec.html")
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/redes")
+def redes():
+    return render_template("redes.html")
+
+
+
 
 
 if __name__ == "__main__":

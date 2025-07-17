@@ -1,6 +1,18 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="\">SAM JME</a>
+    <a
+      class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4"
+      href="/"
+    >
+      <img
+        src="/static/imagenes/logojpg.ico"
+        alt="Logo"
+        width="40"
+        height="40"
+        class="d-inline-block align-text-top rounded-circle border border-light"
+      />
+      SAM JME
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,48 +25,76 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="\"
+          
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/"
+            >Servicios e Innovación Tecnológica</a
+          >
+        </li>
+        <a class="nav-link  fw-semibold" aria-current="page" href="/tec"
             >Servicios Contables</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/tec">Servicios e Innovacion Tecnologica</a>
+          <a class="nav-link fw-semibold" href="/redes">Redes Sociales</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">Acerca de</a>
+          <a class="nav-link fw-semibold" href="/about">Acerca de</a>
         </li>
-        
       </ul>
-
       <form class="d-flex" role="search">
         <input
-          class="form-control me-2"
+          class="form-control me-2 bg-dark text-white border-secondary"
           type="search"
           placeholder="Buscar"
           aria-label="Search"
         />
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
       </form>
     </div>
   </div>
 </nav>
 <style>
+  html,
   body {
+    height: 100%;
+    min-height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-image: url("https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1500&q=80");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
   }
+  main {
+    flex: 1 0 auto;
+  }
+  .navbar-brand {
+    letter-spacing: 1px;
+  }
+  .nav-link {
+    transition: color 0.2s, background 0.2s;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+  }
+  .nav-link.active,
+  .nav-link:hover {
+    background: #232946;
+    color: #fff !important;
+  }
+  .navbar {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+  @media (max-width: 991px) {
+    .navbar-nav {
+      gap: 0 !important;
+    }
+  }
 </style>
 
-<footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
-  <div class="text-center p-0" style="background-color: rgba(0, 0, 0, 0.004)">
-    © 2025 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/"
-      >MDBootstrap.com</a
-    >
-  </div>
-</footer>
