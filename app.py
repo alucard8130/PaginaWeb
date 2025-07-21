@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
@@ -19,6 +20,11 @@ app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
 
+@app.route("/descargas")
+def descargas():
+    return render_template("descargas.html")
+
+
 @app.route("/tec", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -38,6 +44,7 @@ def index():
             flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
         return redirect(url_for("index"))
     return render_template("index.html")
+
 
 @app.route("/", methods=["GET", "POST"])
 def tec():
@@ -68,9 +75,6 @@ def tec():
 @app.route("/redes")
 def redes():
     return render_template("redes.html")
-
-
-
 
 
 if __name__ == "__main__":
