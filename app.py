@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 
 # Cargar variables de entorno desde .env
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")  # Necesario para flash
+app.secret_key = os.getenv("SECRET_KEY")  
 
-# Configuración de Flask-Mail (ejemplo con Hotmail)
+
 
 app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.live.com")
 app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT", 587))
