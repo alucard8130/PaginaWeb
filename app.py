@@ -20,6 +20,8 @@ app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
 
+
+
 @app.route("/descargas")
 def descargas():
     return render_template("descargas.html")
@@ -76,6 +78,9 @@ def tec():
 def redes():
     return render_template("redes.html")
 
+@app.route("/gestor_condominal")
+def gestor_condominal():
+    return render_template("gestor_condominal.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
