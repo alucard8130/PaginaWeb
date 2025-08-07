@@ -62,10 +62,10 @@
   </head>
   <body>
     {% include "navbar.html" %}
-    <section class="hero d-flex align-items-center">
+    <section class="hero d-flex align-items-start">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
+        <div class="row align-items-start">
+          <div class="col-md-7">
             <div class="hero-title mb-3">GESTOR ADMINISTRATIVO CONDOMINAL</div>
             <div class="hero-desc mb-4">
               Administra tu condominio de forma fácil, segura y profesional.<br />
@@ -79,13 +79,51 @@
               >Solicita una demo</a
             >
           </div>
-          <div class="col-md-6 text-center">
+          <div class="col-md-5">
+            <div class="ratio ratio-16x9 mb-2">
+              <iframe
+                class="video-demo"
+                src="https://www.youtube.com/embed/zpxVm4No04A"
+                title="Demo Gestor Administrativo Condominal"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container my-5">
+      <div class="row text-center mb-4">
+        <h2 class="fw-bold">Imágenes del sistema</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="d-flex flex-wrap justify-content-center gap-3">
             <img
               src="/static/imagenes/gesac/login.png"
-              alt="Pantalla del sistema"
-              class="screenshot mb-2"
+              alt="Login"
+              class="screenshot"
+              style="width: 320px; height: 180px; object-fit: cover"
             />
-            <!-- Puedes cambiar la imagen por una captura real de tu sistema -->
+            <img
+              src="/static/imagenes/gesac/dasboard_pagos.png"
+              alt="Dashboard"
+              class="screenshot"
+              style="width: 320px; height: 180px; object-fit: cover"
+            />
+            <img
+              src="/static/imagenes/gesac/dashboard_cartera.png"
+              alt="Reportes"
+              class="screenshot"
+              style="width: 320px; height: 180px; object-fit: cover"
+            />
+            <img
+              src="/static/imagenes/gesac/edo_resultados.png"
+              alt="Usuarios"
+              class="screenshot"
+              style="width: 320px; height: 180px; object-fit: cover"
+            />
+            <!-- Agrega más imágenes aquí para el collage -->
           </div>
         </div>
       </div>
@@ -129,26 +167,7 @@
         </div>
       </div>
     </section>
-    <section class="container my-5">
-      <div class="row mb-4">
-        <div class="col text-center">
-          <h2 class="fw-bold">Mira cómo funciona</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <!-- Video demo: puedes cambiar el src por el tuyo de YouTube o local -->
-          <div class="ratio ratio-16x9">
-            <iframe
-              class="video-demo"
-              src="https://youtu.be/zpxVm4No04A"
-              title="Demo Gestor Administrativo Condominal"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Sección de video ahora está en el hero -->
     <section class="container my-5">
       <div class="row mb-4">
         <div class="col text-center">
@@ -200,55 +219,7 @@
         </div>
       </div>
     </section>
-    <section class="container my-5" id="contacto">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card shadow">
-            <div class="card-body">
-              <h2 class="fw-bold mb-4 text-center">
-                Solicita una demo o más información
-              </h2>
-              <form>
-                <div class="mb-3">
-                  <label for="nombre" class="form-label">Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nombre"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label"
-                    >Correo electrónico</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="email"
-                    placeholder="nombre@ejemplo.com"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="mensaje" class="form-label">Mensaje</label>
-                  <textarea
-                    class="form-control"
-                    id="mensaje"
-                    rows="4"
-                    placeholder="¿En qué podemos ayudarte?"
-                  ></textarea>
-                </div>
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">
-                    Enviar mensaje
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Se eliminó la sección de formulario de contacto -->
     <footer class="bg-dark text-white text-center py-3 mt-5">
       <small
         >© 2025 Gestor Administrativo Condominal. Todos los derechos
