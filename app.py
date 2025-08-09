@@ -4,7 +4,6 @@ from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
 
-# Cargar variables de entorno desde .env
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")  
 
@@ -67,11 +66,6 @@ def tec():
             flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
         return redirect(url_for("tec"))
     return render_template("tec.html")
-
-
-# @app.route("/about")
-# def about():
-#     return render_template("about.html")
 
 
 @app.route("/redes")
