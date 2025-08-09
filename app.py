@@ -1,12 +1,16 @@
-
+from flask import send_from_directory
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY")  
+app.secret_key = os.getenv("SECRET_KEY")
 
+# Ruta para servir ads.txt desde la raíz
+@app.route("/ads.txt")
+def ads_txt():
+    return send_from_directory(".", "ads.txt")
 
 
 app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.live.com")
@@ -18,7 +22,6 @@ app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
 app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 
 mail = Mail(app)
-
 
 
 @app.route("/descargas")
@@ -72,9 +75,11 @@ def tec():
 def redes():
     return render_template("redes.html")
 
+
 @app.route("/gestor_condominal")
 def gestor_condominal():
     return render_template("gestor_condominal.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
