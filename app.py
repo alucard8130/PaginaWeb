@@ -1,3 +1,4 @@
+
 from flask import send_from_directory
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
@@ -6,6 +7,7 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
+
 
 # Ruta para servir ads.txt desde la raíz
 @app.route("/ads.txt")
@@ -81,5 +83,29 @@ def gestor_condominal():
     return render_template("gestor_condominal.html")
 
 
+# Ruta para registro de curso
+@app.route("/registro_curso", methods=["GET", "POST"])
+def registro_curso():
+    if request.method == "POST":
+        nombre = request.form.get("nombre")
+        email = request.form.get("email")
+        telefono = request.form.get("telefono")
+        curso = request.form.get("curso")
+        comentarios = request.form.get("comentarios")
+        # Enviar correo con Flask-Mail
+        msg = Message(
+            subject="Nuevo registro de curso",
+            recipients=["smart8130@hotmail.com"],
+            body=f"Nombre: {nombre}\nEmail: {email}\nTeléfono: {telefono}\nCurso: {curso}\nComentarios: {comentarios}",
+        )
+        try:
+            mail.send(msg)
+            flash("¡Registro enviado correctamente!", "success")
+        except Exception as e:
+            flash("Error al enviar el registro. Intenta más tarde.", "danger")
+    return render_template("registro_curso.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
