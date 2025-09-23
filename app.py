@@ -78,9 +78,9 @@ def redes():
     return render_template("redes.html")
 
 
-@app.route("/gestor_condominal")
+@app.route("/gestor_administrativo")
 def gestor_condominal():
-    return render_template("gestor_condominal.html")
+    return render_template("gestor_administrativo.html")
 
 
 # Ruta para registro de curso
