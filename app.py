@@ -1,4 +1,3 @@
-
 from flask import send_from_directory
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
@@ -106,6 +105,11 @@ def registro_curso():
     return render_template("registro_curso.html")
 
 
+# Ruta para política de privacidad GESAC Condóminos
+@app.route("/politica_privacidad_gesac_condominos")
+def politica_privacidad_gesac_condominos():
+    return render_template("politica_privacidad_gesac_condominos.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
-
