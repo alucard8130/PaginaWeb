@@ -297,6 +297,8 @@
     @media (max-width: 560px) {
       .process-row { grid-template-columns: 1fr; }
     }
+
+    a:hover .card-bar { height: 100% !important; }
   </style>
 </head>
 <body>
@@ -308,6 +310,7 @@
     <div class="nav-logo-text"><strong>SoftHeron</strong> / Tecnología</div>
   </a>
   <div class="nav-right">
+    <a href="/gestor_administrativo" class="nav-link">Gestor Inmobiliario Condominal</a>
     <a href="/politica_privacidad_gesac_condominos" class="nav-link">Privacidad GESAC</a>
     <a href="#contacto" class="nav-cta">Iniciar proyecto →</a>
     <button class="nav-hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="Menú">
@@ -317,6 +320,7 @@
 </nav>
 
 <div class="nav-mobile">
+  <a href="/gestor_administrativo" class="nav-link">Gestor Inmobiliario Condominal</a>
   <a href="/politica_privacidad_gesac_condominos">Privacidad GESAC →</a>
   <a href="#contacto" class="nav-cta">Iniciar proyecto →</a>
 </div>
@@ -480,6 +484,48 @@
         <span class="project-link">Próximamente →</span>
       </div>
     </div>
+    <!-- Subsección: Páginas web para clientes -->
+<div style="margin-top: 80px; padding-top: 64px; border-top: 1px solid rgba(255,255,255,0.06);">
+
+  <div class="section-header" style="margin-bottom: 48px;">
+    <div>
+      <div class="section-label">Páginas web</div>
+      <h2 class="section-title" style="font-size: clamp(28px, 3vw, 44px);">Sitios para<br>nuestros clientes</h2>
+    </div>
+    <p class="section-desc">Diseño y desarrollo web completo para negocios que necesitan presencia digital profesional.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: rgba(255,255,255,0.06);">
+
+    <!-- Colmillo Natural -->
+    <a href="https://colmillo-natural-food.onrender.com/" target="_blank" rel="noopener"
+       style="background:#070910; padding: 36px 32px; text-decoration: none; display: block; position: relative; overflow: hidden; transition: background 0.3s; group;">
+      <div style="position:absolute; top:0; left:0; width:3px; height:0; background:var(--accent); transition: height 0.4s cubic-bezier(0.25,1,0.5,1);" class="card-bar"></div>
+
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 24px;">
+        <span style="font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase;">E-commerce / Mascotas</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(200,255,0,0.4)" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </div>
+
+      <div style="font-family:var(--display); font-size:22px; font-weight:700; color:#e8e6e1; letter-spacing:-0.01em; margin-bottom:10px;">
+        Colmillo Natural
+      </div>
+      <div style="font-size:13px; color:rgba(232,230,225,0.45); line-height:1.6; margin-bottom:28px;">
+        Tienda en línea de snacks premium deshidratados para perros. Catálogo de productos, carrito de compras y contacto por WhatsApp.
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        <span style="font-family:var(--mono); font-size:10px; color:rgba(200,255,0,0.7); border:1px solid rgba(200,255,0,0.2); padding:4px 10px; letter-spacing:0.1em; text-transform:uppercase;">E-commerce</span>
+        <span style="font-family:var(--mono); font-size:10px; color:rgba(200,255,0,0.7); border:1px solid rgba(200,255,0,0.2); padding:4px 10px; letter-spacing:0.1em; text-transform:uppercase;">Catálogo</span>
+        <span style="font-family:var(--mono); font-size:10px; color:rgba(200,255,0,0.7); border:1px solid rgba(200,255,0,0.2); padding:4px 10px; letter-spacing:0.1em; text-transform:uppercase;">WhatsApp</span>
+      </div>
+    </a>
+
+    <!-- Espacio para próximo cliente -->
+
+
+  </div>
+</div>
   </div>
 </section>
 

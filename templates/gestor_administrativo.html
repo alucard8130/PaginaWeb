@@ -1,425 +1,572 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestor Administrativo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        background: #f5f7fa;
-      }
-      .hero {
-        background: linear-gradient(90deg, #232946 60%, #eebbc3 100%);
-        color: #fff;
-        padding: 60px 0 40px 0;
-        text-align: left;
-      }
-      .hero-title {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #ffb800;
-      }
-      .hero-desc {
-        font-size: 1.3rem;
-        font-weight: 500;
-        color: #fff;
-      }
-      .hero-btn {
-        font-size: 1.1rem;
-        font-weight: bold;
-        background: #ffb800;
-        color: #232946;
-        border: none;
-      }
-      .hero-btn:hover {
-        background: #ffd966;
-        color: #232946;
-      }
-      .feature-icon {
-        font-size: 2.5rem;
-        color: #ffb800;
-      }
-      .feature-card {
-        border-radius: 12px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-      }
-      .screenshot {
-        border-radius: 10px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-        max-width: 100%;
-        margin-bottom: 1.5rem;
-      }
-      .video-demo {
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-      }
-    </style>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17722019186">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema Administrativo Condominal — GESAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  gtag('config', 'AW-17722019186');
-</script>
-<script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-</script>
-  </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17722019186"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    :root {
+      --ink: #0a0c10;
+      --accent: #c8ff00;
+      --muted: #6b7280;
+      --border: rgba(255,255,255,0.08);
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+      --serif: 'Instrument Serif', serif;
+      --text: #e8e6e1;
+      --dim: rgba(232,230,225,0.55);
+    }
 
-  gtag('config', 'AW-17722019186');
-</script>
-  <body>
-    <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-2293386253125715">
-</amp-auto-ads>
-    {% include "navbar.html" %}
-    <section class="hero d-flex align-items-start">
-      <div class="container">
-        <div class="row align-items-start">
-          <div class="col-md-7">
-            <div class="hero-title mb-3">SISTEMA WEB ADMINISTRATIVO CONDOMINAL</div>
-            <div class="hero-desc mb-4">
-              Administra miles de propiedades ya sean propias, rentadas o en condominio de forma fácil, segura y profesional.<br />
-              Recibe cobros en linea, obten reportes profesionales, realiza votaciones en linea y más desde cualquier
-              lugar.
-              <br />
-              Timbra facturas electrónicas y lleva el control total de ingresos y gastos de tu portafolio inmobiliario.
-              <br />
-              <strong>¡Todo en un solo lugar!</strong>
-            </div>
-            <h2>
-              <strong
-                ></strong
-              >
-            </h2>
-            <h4>
-              <strong
-                >¡Prueba gratis por 30 días!, sin limites de unidades por
-                condominio!</strong
-              >
-            </h4>
-            <h4>
-              <strong
-                >No importa si tienes 10 o 500 propiedades, nuestro sistema se
-                adapta a ti.</strong
-              >
-            </h4>
-            <a
-              href="https://adminsoftheron.onrender.com/registro/"
-              class="btn hero-btn px-4 py-2 mb-3"
-              target="_blank">
-              Acceso Gratis 30 dias
-            </a>
-            <a
-              href="https://www.youtube.com/@Gesac.GestorAdministrativoCond"
-              class="btn hero-btn px-4 py-2 mb-3"
-              target="_blank">
-              Videos Tutoriales para el usuario
-            </a>
-             <a
-              href="/static/docs/manual_gesac.pdf"
-              class="btn hero-btn px-4 py-2 mb-3"
-              target="_blank">
-              Descargar Manual de Usuario (PDF)
-            </a>
-          </div>
-          <div class="col-md-5">
-            <div class="ratio ratio-16x9 mb-2">
-              <iframe
-                class="video-demo"
-                src="https://www.youtube.com/embed/sbnxDtq3aHU?si=vynzsHEN16zjGV7Q" 
-                title="Demo Gestor Administrativo Inmobiliario"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <p style="color: #fff; font-size: 0.9rem">
-              Video demostrativo del sistema gestor administrativo condominial
-            </p>
-          </div>
+    html { scroll-behavior: smooth; }
+    body { background: var(--ink); color: var(--text); font-family: var(--display); overflow-x: hidden; }
+
+    /* ── NAVBAR ── */
+    .navbar { position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 64px; background: rgba(10,12,16,0.94); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 28px; height: 28px; background: var(--accent); display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%); flex-shrink: 0; }
+    .nav-logo-mark span { font-family: var(--display); font-size: 12px; font-weight: 800; color: #0a0c10; }
+    .nav-logo-text { font-family: var(--mono); font-size: 11px; color: rgba(232,230,225,0.55); letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-logo-text strong { color: var(--text); font-weight: 400; }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .nav-back { font-family: var(--mono); font-size: 11px; color: rgba(232,230,225,0.45); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; border-radius: 3px; transition: color 0.15s, background 0.15s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-back svg { width: 13px; height: 13px; }
+    .nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #0a0c10; background: var(--accent); padding: 9px 22px; text-decoration: none; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); transition: background 0.15s; margin-left: 8px; }
+    .nav-cta:hover { background: #d4ff26; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; height: 1px; background: rgba(232,230,225,0.5); }
+    .nav-hamburger span:nth-child(1) { width: 20px; }
+    .nav-hamburger span:nth-child(2) { width: 20px; }
+    .nav-hamburger span:nth-child(3) { width: 12px; background: var(--accent); }
+    .nav-mobile { display: none; flex-direction: column; background: rgba(10,12,16,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); padding-bottom: 16px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { display: block; padding: 14px 24px; font-family: var(--mono); font-size: 12px; color: rgba(232,230,225,0.55); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .nav-mobile .nav-cta { margin: 12px 24px 0; display: block; text-align: center; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 100px 60px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(200,255,0,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 5% 80%, rgba(99,102,241,0.07) 0%, transparent 55%),
+        var(--ink);
+    }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1100px; }
+    .hero-badge { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .badge-line { width: 32px; height: 1px; background: var(--accent); }
+    .badge-text { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; }
+    .hero-title { font-size: clamp(36px, 5vw, 68px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.95; margin-bottom: 28px; }
+    .hero-title em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .hero-desc { font-size: 15px; line-height: 1.75; color: var(--dim); margin-bottom: 36px; max-width: 500px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-accent { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #0a0c10; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: background 0.2s; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
+    .btn-accent:hover { background: #d4ff26; }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--dim); border: 1px solid rgba(255,255,255,0.12); font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { color: var(--text); border-color: rgba(255,255,255,0.3); }
+    .hero-video { border-radius: 4px; overflow: hidden; aspect-ratio: 16/9; background: #070910; border: 1px solid var(--border); }
+    .hero-video iframe { width: 100%; height: 100%; display: block; }
+    .hero-note { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 10px; letter-spacing: 0.06em; }
+
+    /* ── STRIP ── */
+    .strip { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .strip-item { padding: 32px 60px; border-right: 1px solid var(--border); }
+    .strip-item:last-child { border-right: none; }
+    .strip-num { font-size: 40px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+    .strip-num span { color: var(--accent); }
+    .strip-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 100px 60px; }
+    .dark-section { background: #070910; padding: 100px 60px; }
+    .sec-label { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; }
+    .sec-title { font-size: clamp(32px, 3.5vw, 52px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
+    .sec-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
+    .sec-desc { max-width: 380px; font-size: 15px; line-height: 1.7; color: var(--dim); align-self: flex-end; }
+
+    /* Features grid */
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); }
+    .feature { background: var(--ink); padding: 40px 32px; transition: background 0.3s; position: relative; overflow: hidden; }
+    .feature:hover { background: #111520; }
+    .feature::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.4s cubic-bezier(0.25,1,0.5,1); }
+    .feature:hover::before { height: 100%; }
+    .feature-icon { font-size: 28px; margin-bottom: 20px; }
+    .feature-name { font-size: 16px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .feature-desc { font-size: 13px; line-height: 1.65; color: var(--dim); }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); }
+    .plan { background: var(--ink); padding: 52px 48px; position: relative; }
+    .plan.featured { background: #0d1117; }
+    .plan-badge { display: inline-block; font-family: var(--mono); font-size: 10px; color: #0a0c10; background: var(--accent); padding: 4px 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 24px; }
+    .plan-name { font-size: 22px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .plan-sub { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 32px; }
+    .plan-price { font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-bottom: 4px; }
+    .plan-price span { font-size: 18px; font-weight: 400; color: var(--muted); }
+    .plan-annual { font-family: var(--mono); font-size: 12px; color: rgba(200,255,0,0.6); letter-spacing: 0.06em; margin-bottom: 36px; }
+    .plan-iva { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 36px; }
+    .plan-divider { height: 1px; background: var(--border); margin-bottom: 32px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .plan-features li { font-size: 14px; color: var(--dim); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+    .plan-features li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.6; flex-shrink: 0; margin-top: 6px; }
+    .plan-features li strong { color: var(--text); font-weight: 600; }
+
+    /* Screenshots */
+    .screenshots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .shot { position: relative; overflow: hidden; }
+    .shot img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: grayscale(20%) brightness(0.75); transition: filter 0.4s, transform 0.5s cubic-bezier(0.25,1,0.5,1); }
+    .shot:hover img { filter: grayscale(0%) brightness(0.9); transform: scale(1.03); }
+    .shot-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(to top, rgba(7,9,16,0.9) 0%, transparent 100%); font-family: var(--mono); font-size: 11px; color: var(--text); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* Testimonials */
+    .testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); }
+    .testimonial { background: var(--ink); padding: 48px 44px; }
+    .testimonial-quote { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1.6; color: var(--text); margin-bottom: 28px; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; filter: grayscale(40%); }
+    .testimonial-name { font-size: 14px; font-weight: 700; }
+    .testimonial-role { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-top: 2px; }
+
+    /* CTA Banner */
+    .cta-banner { background: var(--accent); color: #0a0c10; padding: 80px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-text { font-size: clamp(26px, 3vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; max-width: 580px; }
+    .cta-text em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+    .cta-group { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .btn-dark { display: inline-flex; align-items: center; gap: 8px; background: #0a0c10; color: var(--accent); font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 32px; text-decoration: none; transition: background 0.2s; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
+    .btn-dark:hover { background: #1a1f2e; }
+    .cta-note { font-family: var(--mono); font-size: 11px; color: rgba(10,12,16,0.6); letter-spacing: 0.08em; }
+
+    /* Footer */
+    footer { padding: 40px 60px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .footer-link { font-family: var(--mono); font-size: 11px; color: rgba(200,255,0,0.5); text-decoration: none; transition: color 0.15s; }
+    .footer-link:hover { color: var(--accent); }
+
+    /* Animations */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.7s cubic-bezier(0.25,1,0.5,1) both; }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.22s; }
+    .d3 { animation-delay: 0.34s; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .navbar { padding: 0 24px; }
+      .nav-back, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding: 60px 24px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .strip { grid-template-columns: 1fr; }
+      .strip-item { padding: 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .section, .dark-section { padding: 72px 24px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .screenshots-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .cta-banner { padding: 60px 24px; }
+      footer { padding: 32px 24px; }
+    }
+    @media (max-width: 560px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .screenshots-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark"><span>SH</span></div>
+    <div class="nav-logo-text"><strong>SoftHeron</strong> / Tecnología</div>
+  </a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l7 7-7 7"/></svg>
+      Volver al inicio
+    </a>
+    <a href="/#contacto" class="nav-cta">Iniciar proyecto →</a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="/">← Volver al inicio</a>
+  <a href="/#contacto" class="nav-cta">Iniciar proyecto →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge fade-up">
+        <div class="badge-line"></div>
+        <div class="badge-text">Sistema Web SaaS</div>
       </div>
-    </section>
-    <!-- Sección de Precios -->
-    <section class="container my-5">
-      <div class="row mb-4">
-        <div class="col text-center">
-          <h2 class="fw-bold" style="color: #fff">Planes y Precios</h2>
-          <p class="lead" style="color: #fff">
-            Elige el plan que mejor se adapte a tu portafolio INMOBILIARIO. Todos incluyen
-            soporte y actualizaciones.
+      <h1 class="hero-title fade-up d1">
+        Gestión condominal<br><em>sin complicaciones.</em>
+      </h1>
+      <p class="hero-desc fade-up d2">
+        Administra propiedades, recibe cobros en línea, genera reportes profesionales, realiza votaciones y timbra facturas electrónicas — todo desde un solo lugar y desde cualquier dispositivo.
+      </p>
+      <div class="hero-ctas fade-up d3">
+        <a href="https://adminsoftheron.onrender.com/registro/" target="_blank" class="btn-accent">
+          Prueba gratis 30 días →
+        </a>
+        <a href="https://www.youtube.com/@JaimeEstradaB" target="_blank" class="btn-outline">
+          Ver tutoriales
+        </a>
+        <a href="/static/docs/manual_gesac.pdf" target="_blank" class="btn-outline">
+          Descargar manual PDF
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-video">
+        <iframe src="https://www.youtube.com/embed/sbnxDtq3aHU?si=vynzsHEN16zjGV7Q" title="Demo GESAC" allowfullscreen></iframe>
+      </div>
+      <p class="hero-note">Video demostrativo del sistema — GESAC Gestor Administrativo Condominal</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">30<span> días</span></div>
+    <div class="strip-label">Prueba gratuita sin límites</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">∞</div>
+    <div class="strip-label">Unidades por condominio</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">100<span>%</span></div>
+    <div class="strip-label">En la nube, desde cualquier lugar</div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="section">
+  <div class="sec-header">
+    <div>
+      <div class="sec-label">¿Por qué elegirnos?</div>
+      <h2 class="sec-title">Todo lo que necesita<br>tu administración</h2>
+    </div>
+    <p class="sec-desc">Un sistema pensado para administradores, comités y condóminos. Simple, rápido y profesional.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">⏱️</div>
+      <div class="feature-name">Ahorra tiempo</div>
+      <p class="feature-desc">Automatiza cobros, reportes y tareas repetitivas para enfocarte en lo que importa.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-name">Seguro y en la nube</div>
+      <p class="feature-desc">Accede desde cualquier dispositivo. Tu información siempre protegida y respaldada.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <div class="feature-name">Reportes ejecutivos</div>
+      <p class="feature-desc">Estados de resultados, adeudos, ingresos y gastos listos en segundos.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💬</div>
+      <div class="feature-name">Comunicación efectiva</div>
+      <p class="feature-desc">Envía avisos, recibos y notificaciones a condóminos con un solo clic.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🗳️</div>
+      <div class="feature-name">Votaciones en línea</div>
+      <p class="feature-desc">Realiza asambleas y votaciones digitales de forma transparente y documentada.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💳</div>
+      <div class="feature-name">Cobro en línea</div>
+      <p class="feature-desc">Recibe pagos de cuotas vía Stripe directamente desde la plataforma.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🧾</div>
+      <div class="feature-name">Facturación electrónica</div>
+      <p class="feature-desc">Timbra facturas electrónicas y concilia tu información bancaria sin esfuerzo.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <div class="feature-name">App móvil</div>
+      <p class="feature-desc">Acceso desde smartphone para condóminos y administradores en plan Premium.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCREENSHOTS ── -->
+<section class="dark-section" id="capturas">
+  <div class="sec-header">
+    <div>
+      <div class="sec-label">Pantallas del sistema</div>
+      <h2 class="sec-title">Diseñado para<br>la claridad</h2>
+    </div>
+    <p class="sec-desc">Dashboards intuitivos con toda la información financiera y operativa de tu condominio.</p>
+  </div>
+  <div class="screenshots-grid">
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/votaciones.png" alt="Votaciones en línea" />
+      <div class="shot-label">Votaciones en línea</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/stripe.png" alt="Cobro de adeudos" />
+      <div class="shot-label">Cobro de adeudos — Stripe</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/dashboardgtos.png" alt="Dashboard ingresos" />
+      <div class="shot-label">Dashboard de ingresos</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/dasboard_pagos.png" alt="Dashboard pagos" />
+      <div class="shot-label">Dashboard de pagos</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/dashboard_cartera.png" alt="Dashboard cartera" />
+      <div class="shot-label">Dashboard de cartera</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/edo_resultados.png" alt="Estado de resultados" />
+      <div class="shot-label">Estado de resultados</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/pptogtos.png" alt="Presupuesto gastos" />
+      <div class="shot-label">Presupuesto de gastos</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/pptoing.png" alt="Presupuesto ingresos" />
+      <div class="shot-label">Presupuesto de ingresos</div>
+    </div>
+    <div class="shot">
+      <img src="https://paginaweb-ro9v.onrender.com/static/imagenes/pantalla_log.png" alt="App móvil" />
+      <div class="shot-label">App móvil</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section" id="precios">
+  <div class="sec-header">
+    <div>
+      <div class="sec-label">Planes y precios</div>
+      <h2 class="sec-title">Elige el plan<br>para tu portafolio</h2>
+    </div>
+    <p class="sec-desc">Todos los planes incluyen soporte, actualizaciones y unidades ilimitadas. Precios más IVA.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="plan">
+      <div class="plan-name">Plan Básico</div>
+      <div class="plan-sub">1 usuario administrador · 2 usuarios consulta</div>
+      <div class="plan-price">$599 <span>MXN/mes</span></div>
+      <div class="plan-annual">$6,589 MXN/año</div>
+      <div class="plan-iva">Precios más IVA · 12 meses de base de datos</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Módulo de comunicación y votaciones</li>
+        <li>Avisos y notificaciones a condóminos</li>
+        <li>Control de propiedades y áreas comunes</li>
+        <li>Control de cuotas, ingresos y gastos</li>
+        <li>Cartera vencida y envío de avisos automáticos</li>
+        <li>Tickets de mantenimiento</li>
+        <li>Presupuestos de ingresos y gastos</li>
+        <li>Gráficos y estado de resultados</li>
+        <li>Consulta REPSE proveedores</li>
+        <li>Control de nómina y caja chica</li>
+      </ul>
+      <a href="https://adminsoftheron.onrender.com/registro/" target="_blank" class="btn-accent">Solicitar plan →</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">Más completo</div>
+      <div class="plan-name">Plan Premium</div>
+      <div class="plan-sub">2 usuarios administrador · 3 usuarios consulta + pago en línea</div>
+      <div class="plan-price">$999 <span>MXN/mes</span></div>
+      <div class="plan-annual">$10,989 MXN/año</div>
+      <div class="plan-iva">Precios más IVA · 36 meses de base de datos</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li><strong>Todo lo del Plan Básico</strong></li>
+        <li>Cobro en línea de adeudos vía Stripe</li>
+        <li>Facturación electrónica y timbrado</li>
+        <li>Contratos de áreas comunes</li>
+        <li>Conciliación bancaria</li>
+        <li>Acceso APP móvil</li>
+        <li>Publicidad institucional</li>
+        <li>36 meses de resguardo de base de datos</li>
+        <li>Soporte VIP</li>
+      </ul>
+      <a href="https://adminsoftheron.onrender.com/registro/" target="_blank" class="btn-accent">Solicitar plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="dark-section" id="testimonios">
+  <div class="sec-header">
+    <div>
+      <div class="sec-label">Testimonios</div>
+      <h2 class="sec-title">Lo que dicen<br>nuestros clientes</h2>
+    </div>
+    <button onclick="document.getElementById('form-testimonio').scrollIntoView({behavior:'smooth'})"
+      style="align-self:flex-end;background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(232,230,225,0.6);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 0.2s;"
+      onmouseover="this.style.color='#e8e6e1';this.style.borderColor='rgba(255,255,255,0.3)'"
+      onmouseout="this.style.color='rgba(232,230,225,0.6)';this.style.borderColor='rgba(255,255,255,0.12)'">
+      Dejar mi opinión →
+    </button>
+  </div>
+
+  <!-- Testimonios dinámicos -->
+  <div id="testimonios-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);">
+    <div style="background:#070910;padding:48px 44px;grid-column:span 2;text-align:center;">
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(232,230,225,0.3);letter-spacing:0.1em;">Cargando testimonios...</div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div id="form-testimonio" style="margin-top:64px;padding-top:64px;border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:600px;">
+      <div class="sec-label">Comparte tu experiencia</div>
+      <h3 style="font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:32px;">¿Ya usas GESAC?<br>Cuéntanos cómo te ha ido.</h3>
+
+      <div id="form-msg" style="display:none;padding:16px 20px;margin-bottom:24px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.08em;"></div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-family:'DM Mono',monospace;font-size:10px;color:#6b7280;letter-spacing:0.14em;text-transform:uppercase;">Nombre completo</label>
+            <input id="t-nombre" type="text" placeholder="Tu nombre"
+              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e8e6e1;font-family:'Syne',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;"
+              onfocus="this.style.borderColor='rgba(200,255,0,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <label style="font-family:'DM Mono',monospace;font-size:10px;color:#6b7280;letter-spacing:0.14em;text-transform:uppercase;">Rol o empresa</label>
+            <input id="t-rol" type="text" placeholder="Ej. Administrador, Comité..."
+              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e8e6e1;font-family:'Syne',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;"
+              onfocus="this.style.borderColor='rgba(200,255,0,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <label style="font-family:'DM Mono',monospace;font-size:10px;color:#6b7280;letter-spacing:0.14em;text-transform:uppercase;">Tu testimonio</label>
+          <textarea id="t-texto" rows="4" placeholder="Cuéntanos tu experiencia con GESAC..."
+            style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#e8e6e1;font-family:'Syne',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color 0.2s;width:100%;resize:vertical;"
+            onfocus="this.style.borderColor='rgba(200,255,0,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"></textarea>
+        </div>
+        <div>
+          <button onclick="enviarTestimonio()"
+            style="background:#c8ff00;color:#0a0c10;border:none;cursor:pointer;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;padding:16px 36px;transition:all 0.2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);"
+            onmouseover="this.style.background='#d4ff26'" onmouseout="this.style.background='#c8ff00'">
+            Enviar testimonio →
+          </button>
+          <p style="font-family:'DM Mono',monospace;font-size:11px;color:#6b7280;margin-top:12px;letter-spacing:0.06em;">
+            Tu opinión será revisada antes de publicarse. ¡Gracias!
           </p>
         </div>
       </div>
-      <div class="row justify-content-center g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow-lg border-0">
-            <div class="card-body text-center">
-              <h5 class="card-title">Plan Basico - 1 usuario</h5>
-              <p class="card-text">Unidades ilimitadas</p>
-              <p class="card-text">2 usuarios solo consulta de adeudos</p>
-              <p class="card-text">12 meses base datos</p>
-              <h3 class="fw-bold mb-3">$599 MXN/mes</h3>
-              <h4 class="fw-bold mb-3">$6,589 MXN/anual</h4>
-              <p>Precios más IVA</p>
-              <ul class="list-unstyled mb-3">
-                <li>✔️ Modulo de comunicacion (Votaciones)</li>
-                <li>✔️ Modulo de Avisos y Notificaciones</li>
-                <li>✔️ Control y registro de propiedades</li>
-                <li>✔️ Control y registro de areas comunes</li>
-                <li>✔️ Control y registro de cuotas mensuales o anuales</li>
-                <li>✔️ Control y registro de otros ingresos</li>
-                <li>✔️ Control y registro de gastos</li>
-                <li>✔️ Consulta REPSE Proveedores</li>
-                <li>✔️ Control y registro de incidencias de nomina</li>
-                <li>✔️ Control y registro de caja chica</li>
-                <li>✔️ Levanta Tickets de Mantenimiento</li>
-                <li>✔️ Control y registro de presupuestos ingresos y gastos</li>
-                <li>✔️ Control y registro de cartera vencida</li>
-                <li>✔️ Envio de avisos de Adeudos automaticos</li>
-                <li>✔️ Graficos de ingresos y gastos</li>
-                <li>✔️ Graficos comparativos presupuestos</li>
-                <li>✔️ Estado de resultados flujo y contable</li>
-              </ul>
-              <a href="https://adminsoftheron.onrender.com/registro/" target="_blank" class="btn btn-primary">Solicitar</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow-lg border-0">
-            <div class="card-body text-center">
-              <h5 class="card-title">Plan Premium - 2 usuarios</h5>
-              <p class="card-text">Unidades ilimitadas</p>
-              <p class="card-text">3 usuarios para consulta de adeudos y pago en línea</p>
-              <p class="card-text">36 meses base datos</p>
-              <h3 class="fw-bold mb-3">$999 MXN/mes</h3>
-              <h4 class="fw-bold mb-3">$10,989 MXN/anual</h4>
-              <p>Precios más IVA</p>
-              <ul class="list-unstyled mb-3">
-                <li>✔️ Todo lo del plan Básico</li>
-                <li>✔️ Publicidad Institucional</li>
-                <li>✔️ Control y generacion de CONTRATOS areas comunes</li>
-                <li>✔️ Cobro en linea de adeudos via STRIPE </li>
-                <li>✔️ Facturacion electronica </li>
-                <li>✔️ Timbrado de facturas</li>
-                <li>✔️ 36 meses de resguardo base datos</li>
-                <li>✔️ Conciliacion Bancaria</li>
-                <li>✔️ Acceso APP Movil</li>
-                 <li>✔️ Soporte VIP</li>
-              </ul>
-              <a href="https://adminsoftheron.onrender.com/registro/" target="_blank" class="btn btn-primary">Solicitar</a>
-            </div>
-          </div>
-        </div>
-      </div>  
-    </section>
-    <!-- Fin sección de Precios -->
-    <section class="container my-5">
-      <div class="row text-center mb-4">
-        <h2 class="fw-bold" style="color: #fff">Imágenes del Sistema</h2>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-10">
-          <div class="d-flex flex-wrap justify-content-center gap-4">
-                 <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Votaciones de asuntos en linea</h5>
-              <img
-                src="/static/imagenes/gesac/votaciones.png"
-                alt="pago adeudos"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">APP Movil </h5>
-              <img
-                src="/static/imagenes/pantalla_log.png"
-                alt="Acceso APP Movil"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Cobro de Adeudos en linea</h5>
-              <img
-                src="/static/imagenes/gesac/stripe.png"
-                alt="cobro de adeudos"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Dashboard ingresos</h5>
-              <img
-                src="/static/imagenes/gesac/dashboardgtos.png"
-                alt="Dashboard ingresos"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Dashboard de Pagos</h5>
-              <img
-                src="/static/imagenes/gesac/dasboard_pagos.png"
-                alt="Dashboard de Pagos"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Dashboard de Cartera</h5>
-              <img
-                src="/static/imagenes/gesac/dashboard_cartera.png"
-                alt="Dashboard de Cartera"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Estado de Resultados</h5>
-              <img
-                src="/static/imagenes/gesac/edo_resultados.png"
-                alt="Estado de Resultados"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Presupestos gastos</h5>
-              <img
-                src="/static/imagenes/gesac/pptogtos.png"
-                alt="Presupuestos gastos"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-            <div class="text-center">
-              <h5 class="mb-2" style="color: #fff">Prespuesto ingresos</h5>
-              <img
-                src="/static/imagenes/gesac/pptoing.png"
-                alt="Presupuesto ingresos"
-                class="screenshot"
-                style="width: 480px; height: 270px; object-fit: cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="container my-5">
-      <div class="row text-center mb-4">
-        <h2 class="fw-bold" style="color: #fff">
-          ¿Por qué elegir nuestro sistema?
-        </h2>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-3">
-          <div class="card feature-card h-100 p-3 text-center">
-            <div class="feature-icon mb-2">⏱️</div>
-            <h5>Ahorra Tiempo</h5>
-            <p>Automatiza cobros, reportes y tareas repetitivas.</p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card feature-card h-100 p-3 text-center">
-            <div class="feature-icon mb-2">🔒</div>
-            <h5>Seguro y en la Nube</h5>
-            <p>
-              Accede a tu información desde cualquier lugar, siempre protegida.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card feature-card h-100 p-3 text-center">
-            <div class="feature-icon mb-2">📊</div>
-            <h5>Reportes Profesionales</h5>
-            <p>
-              Visualiza adeudos, estados de resultados, ingresos, gastos y más
-              en segundos.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card feature-card h-100 p-3 text-center">
-            <div class="feature-icon mb-2">💬</div>
-            <h5>Comunicación Efectiva</h5>
-            <p>Envía avisos y recibos a condóminos con un clic.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="container my-5">
-      <div class="row mb-4">
-        <div class="col text-center">
-          <h2 class="fw-bold" style="color: #fff">Testimonios</h2>
-        </div>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="card h-100 p-3">
-            <div class="d-flex align-items-center mb-2">
-              <img
-                src="https://randomuser.me/api/portraits/men/33.jpg"
-                class="rounded-circle me-3"
-                width="48"
-                height="48"
-                alt="Cliente 1"
-              />
-              <div>
-                <h6 class="mb-0">Carlos Martínez</h6>
-                <small class="text-muted">Miembro de Comité</small>
-              </div>
+<script>
+  async function cargarTestimonios() {
+    const grid = document.getElementById('testimonios-grid');
+    try {
+      const res = await fetch('/testimonios/aprobados');
+      const data = await res.json();
+      if (!data.length) {
+        grid.innerHTML = `<div style="background:#070910;padding:48px 44px;grid-column:span 2;text-align:center;"><div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(232,230,225,0.25);letter-spacing:0.1em;">Sé el primero en dejar tu opinión ↓</div></div>`;
+        return;
+      }
+      grid.innerHTML = data.map(t => `
+        <div style="background:#070910;padding:48px 44px;">
+          <div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:20px;line-height:1.6;color:#e8e6e1;margin-bottom:28px;">"${t.texto}"</div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(200,255,0,0.1);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:#c8ff00;flex-shrink:0;">
+              ${t.nombre.charAt(0).toUpperCase()}
             </div>
-            <p class="mb-0">
-              "El sistema nos ha facilitado la gestión y la comunicación con los
-              condominos. ¡Muy recomendable!"
-            </p>
+            <div>
+              <div style="font-size:14px;font-weight:700;">${t.nombre}</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;color:#6b7280;letter-spacing:0.08em;margin-top:2px;">${t.rol}</div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 p-3">
-            <div class="d-flex align-items-center mb-2">
-              <img
-                src="https://randomuser.me/api/portraits/women/44.jpg"
-                class="rounded-circle me-3"
-                width="48"
-                height="48"
-                alt="Cliente 2"
-              />
-              <div>
-                <h6 class="mb-0">Claudia Torres</h6>
-                <small class="text-muted">Administradora Plaza Neza</small>
-              </div>
-            </div>
-            <p class="mb-0">
-              "Ahora todo está más organizado y los reportes son claros y
-              rápidos."
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Se eliminó la sección de formulario de contacto -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-      <small
-        >© 2025 GESAC by JMEB. Todos los derechos
-        reservados.</small
-      >
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-  
+      `).join('');
+    } catch(e) {
+      grid.innerHTML = '';
+    }
+  }
+
+  async function enviarTestimonio() {
+    const nombre = document.getElementById('t-nombre').value.trim();
+    const rol    = document.getElementById('t-rol').value.trim();
+    const texto  = document.getElementById('t-texto').value.trim();
+    const msg    = document.getElementById('form-msg');
+
+    if (!nombre || !texto) {
+      msg.style.display = 'block';
+      msg.style.background = 'rgba(226,75,74,0.1)';
+      msg.style.borderLeft = '3px solid #e24b4a';
+      msg.style.color = '#f09595';
+      msg.textContent = 'Por favor completa tu nombre y testimonio.';
+      return;
+    }
+
+    try {
+      await fetch('/testimonios/nuevo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, rol, texto })
+      });
+      msg.style.display = 'block';
+      msg.style.background = 'rgba(200,255,0,0.07)';
+      msg.style.borderLeft = '3px solid #c8ff00';
+      msg.style.color = '#c8ff00';
+      msg.textContent = '¡Gracias! Tu testimonio será publicado después de revisión.';
+      document.getElementById('t-nombre').value = '';
+      document.getElementById('t-rol').value = '';
+      document.getElementById('t-texto').value = '';
+    } catch(e) {
+      msg.style.display = 'block';
+      msg.style.color = '#f09595';
+      msg.textContent = 'Ocurrió un error. Intenta de nuevo.';
+    }
+  }
+
+  cargarTestimonios();
+</script>
+
+<!-- ── CTA ── -->
+<div class="cta-banner">
+  <div class="cta-text">Prueba el sistema <em>gratis</em> por 30 días — sin límites de unidades.</div>
+  <div class="cta-group">
+    <a href="https://adminsoftheron.onrender.com/registro/" target="_blank" class="btn-dark">Crear cuenta gratuita →</a>
+    <span class="cta-note">Sin tarjeta de crédito · Sin compromiso</span>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Innovación &amp; Tecnología — SoftHeron. Todos los derechos reservados.</div>
+  <a href="/politica_privacidad_gesac_condominos" class="footer-link">Política de Privacidad GESAC →</a>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/525548822343" target="_blank" rel="noopener" style="position:fixed;bottom:32px;right:32px;z-index:999;display:flex;align-items:center;justify-content:center;width:56px;height:56px;background:#25d366;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#1ebe5d';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='#25d366';this.style.transform='translateY(0)'">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.508 5.83L.057 23.25a.75.75 0 00.92.921l5.4-1.43A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.725 9.725 0 01-4.964-1.362l-.355-.212-3.685.975.985-3.6-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+</a>
+
+</body>
 </html>

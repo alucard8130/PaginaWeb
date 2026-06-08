@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Admin — Testimonios</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Syne:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    body { background:#0a0c10; color:#e8e6e1; font-family:'Syne',sans-serif; padding:40px 60px; }
+    h1 { font-size:28px; font-weight:700; margin-bottom:8px; }
+    .sub { font-family:'DM Mono',monospace; font-size:11px; color:#6b7280; letter-spacing:0.12em; margin-bottom:40px; }
+    .card { background:#0d1117; border:1px solid rgba(255,255,255,0.08); padding:28px 32px; margin-bottom:16px; }
+    .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+    .nombre { font-size:16px; font-weight:700; }
+    .rol { font-family:'DM Mono',monospace; font-size:11px; color:#6b7280; margin-top:4px; }
+    .fecha { font-family:'DM Mono',monospace; font-size:10px; color:#444; }
+    .texto { font-size:14px; color:rgba(232,230,225,0.65); line-height:1.7; margin:16px 0; }
+    .badge-pend { font-family:'DM Mono',monospace; font-size:10px; background:rgba(239,159,39,0.12); color:#ef9f27; padding:4px 10px; letter-spacing:0.1em; }
+    .badge-ok   { font-family:'DM Mono',monospace; font-size:10px; background:rgba(200,255,0,0.08); color:#c8ff00; padding:4px 10px; letter-spacing:0.1em; }
+    .actions { display:flex; gap:10px; margin-top:16px; }
+    button { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; padding:9px 20px; border:none; cursor:pointer; transition:opacity 0.2s; }
+    .btn-ok  { background:#c8ff00; color:#0a0c10; clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%); }
+    .btn-del { background:rgba(226,75,74,0.15); color:#e24b4a; }
+    button:hover { opacity:0.8; }
+    .empty { font-family:'DM Mono',monospace; font-size:12px; color:#444; text-align:center; padding:60px; }
+  </style>
+</head>
+<body>
+  <h1>Panel de Testimonios</h1>
+  <div class="sub">GESAC — Moderación / {{ testimonios|length }} total</div>
+
+  {% set pendientes = testimonios|selectattr('aprobado','equalto',false)|list %}
+  {% set aprobados  = testimonios|selectattr('aprobado','equalto',true)|list %}
+
+  <h2 style="font-size:14px;color:#6b7280;font-family:'DM Mono',monospace;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:16px;">Pendientes ({{ pendientes|length }})</h2>
+
+  {% if pendientes %}
+    {% for t in pendientes %}
+    <div class="card" id="card-{{ t.id }}">
+      <div class="card-top">
+        <div>
+          <div class="nombre">{{ t.nombre }}</div>
+          <div class="rol">{{ t.rol }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="badge-pend">Pendiente</span>
+          <span class="fecha">{{ t.fecha }}</span>
+        </div>
+      </div>
+      <div class="texto">"{{ t.texto }}"</div>
+      <div class="actions">
+        <button class="btn-ok" onclick="aprobar('{{ t.id }}')">✓ Aprobar</button>
+        <button class="btn-del" onclick="eliminar('{{ t.id }}')">✕ Eliminar</button>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty">No hay testimonios pendientes.</div>
+  {% endif %}
+
+  <h2 style="font-size:14px;color:#6b7280;font-family:'DM Mono',monospace;letter-spacing:0.12em;text-transform:uppercase;margin:40px 0 16px;">Aprobados ({{ aprobados|length }})</h2>
+
+  {% if aprobados %}
+    {% for t in aprobados %}
+    <div class="card" id="card-{{ t.id }}">
+      <div class="card-top">
+        <div>
+          <div class="nombre">{{ t.nombre }}</div>
+          <div class="rol">{{ t.rol }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="badge-ok">Publicado</span>
+          <span class="fecha">{{ t.fecha }}</span>
+        </div>
+      </div>
+      <div class="texto">"{{ t.texto }}"</div>
+      <div class="actions">
+        <button class="btn-del" onclick="eliminar('{{ t.id }}')">✕ Eliminar</button>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty">No hay testimonios aprobados aún.</div>
+  {% endif %}
+
+  <script>
+    async function aprobar(id) {
+      await fetch(`/admin/testimonios/aprobar/${id}`, { method: 'POST' });
+      document.getElementById('card-' + id).style.opacity = '0.4';
+      setTimeout(() => location.reload(), 600);
+    }
+    async function eliminar(id) {
+      if (!confirm('¿Eliminar este testimonio?')) return;
+      await fetch(`/admin/testimonios/eliminar/${id}`, { method: 'POST' });
+      document.getElementById('card-' + id).remove();
+    }
+  </script>
+</body>
+</html>
