@@ -1,149 +1,567 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Política de Privacidad de GESAC Condóminos</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17722019186">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — GESAC Condóminos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  gtag('config', 'AW-17722019186');
-</script>
-<script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-</script>
-  </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17722019186"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    /* ── NAVBAR ── */
+    .navbar { position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 64px; background: rgba(10,12,16,0.94); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 28px; height: 28px; background: #c8ff00; display: flex; align-items: center; justify-content: center; clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%); flex-shrink: 0; }
+    .nav-logo-mark span { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 800; color: #0a0c10; }
+    .nav-logo-text { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(232,230,225,0.55); letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-logo-text strong { color: #e8e6e1; font-weight: 400; }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+    .nav-back { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(232,230,225,0.45); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; border-radius: 3px; transition: color 0.15s, background 0.15s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: #e8e6e1; background: rgba(255,255,255,0.05); }
+    .nav-back svg { width: 13px; height: 13px; }
+    .nav-cta-nav { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #0a0c10; background: #c8ff00; padding: 9px 22px; text-decoration: none; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); transition: background 0.15s; margin-left: 8px; }
+    .nav-cta-nav:hover { background: #d4ff26; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; height: 1px; background: rgba(232,230,225,0.5); }
+    .nav-hamburger span:nth-child(1) { width: 20px; }
+    .nav-hamburger span:nth-child(2) { width: 20px; }
+    .nav-hamburger span:nth-child(3) { width: 12px; background: #c8ff00; }
+    .nav-mobile { display: none; flex-direction: column; background: rgba(10,12,16,0.98); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(16px); padding-bottom: 16px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { display: block; padding: 14px 24px; font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(232,230,225,0.55); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .nav-mobile .nav-cta-nav { margin: 12px 24px 0; display: block; text-align: center; }
+    @media (max-width: 860px) { .navbar { padding: 0 24px; } .nav-back, .nav-cta-nav { display: none; } .nav-hamburger { display: flex; } }
 
-  gtag('config', 'AW-17722019186');
-</script>
-  <body style="background: #f5f7fa">
-    <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-2293386253125715">
-</amp-auto-ads>
-    <div class="container my-5">
-      <h1 class="mb-4">Política de Privacidad de GESAC Condóminos</h1>
-      <p class="text-muted">Última actualización: 7 de noviembre de 2025</p>
-      <p>
-        <strong>Nombre de la aplicación:</strong> GESAC Condóminos APP<br />
-        <strong>Desarrollador:</strong> Jaime M. Estrada Bernabé<br />
-        <strong>Correo de contacto:</strong> adminsoftheron@gesacadmin.com
-      </p>
-      <h2 class="mt-4">1. Introducción</h2>
-      <p>
-        En GESAC Condóminos valoramos tu privacidad y nos comprometemos a
-        proteger la información personal que compartes con nosotros. Esta
-        Política de Privacidad explica cómo recopilamos, utilizamos y protegemos
-        tus datos al usar nuestra aplicación.
-      </p>
-      <h2 class="mt-4">2. Información que recopilamos</h2>
-      <p>
-        La aplicación GESAC Condóminos solo recopila la información necesaria
-        para brindarte acceso y permitirte realizar pagos de manera segura.
-      </p>
-      <p><strong>Podemos recopilar:</strong></p>
-      <ul>
-        <li>
-          <strong>Datos de acceso:</strong> nombre de usuario y contraseña
-          (proporcionados por el administrador del sistema).
-        </li>
-        <li>
-          <strong>Datos de uso:</strong> información básica sobre el uso de la
-          aplicación (por ejemplo, acceso, fecha y hora).
-        </li>
-        <li>
-          <strong>Datos de pago:</strong> los pagos se procesan de forma segura
-          a través de Stripe. Nosotros no almacenamos los datos de tu tarjeta u
-          otra información financiera; Stripe los maneja directamente conforme a
-          sus propias políticas de seguridad y privacidad.
-        </li>
-      </ul>
-      <h2 class="mt-4">3. Uso de la información</h2>
-      <ul>
-        <li>Verificar tu identidad y permitir el acceso a tu cuenta.</li>
-        <li>Mostrar tu estado de cuenta y saldos pendientes.</li>
-        <li>Permitir el procesamiento seguro de pagos mediante Stripe.</li>
-        <li>Mejorar la seguridad y estabilidad del sistema.</li>
-      </ul>
-      <h2 class="mt-4">4. Compartición de información</h2>
-      <p>No compartimos tu información personal con terceros, excepto:</p>
-      <ul>
-        <li>
-          Con Stripe, únicamente para procesar tus pagos de manera segura.
-          Stripe cumple con los estándares internacionales de protección de
-          datos y seguridad (PCI DSS). Puedes consultar su política de
-          privacidad aquí:
-          <a href="https://stripe.com/privacy" target="_blank"
-            >https://stripe.com/privacy</a
-          >
-        </li>
-      </ul>
-      <h2 class="mt-4">5. Seguridad</h2>
-      <p>
-        Adoptamos medidas técnicas y administrativas razonables para proteger tu
-        información contra el acceso, uso o divulgación no autorizados. El
-        acceso a la aplicación está restringido a usuarios con nombre de usuario
-        y contraseña asignados por el administrador.
-      </p>
-      <p>
-        Sin embargo, ningún sistema es completamente infalible, por lo que no
-        podemos garantizar una seguridad absoluta.
-      </p>
-      <h2 class="mt-4">6. Retención de datos</h2>
-      <p>
-        La información se conservará únicamente mientras sea necesaria para
-        ofrecer los servicios descritos o mientras mantengas tu cuenta activa en
-        la aplicación. Puedes solicitar la eliminación de tus datos
-        contactándonos al correo de soporte.
-      </p>
-      <h2 class="mt-4">7. Tus derechos</h2>
-      <ul>
-        <li>Solicitar acceso a tus datos personales.</li>
-        <li>
-          Solicitar la corrección o eliminación de la información inexacta.
-        </li>
-        <li>Retirar tu consentimiento para el uso de tus datos.</li>
-      </ul>
-      <p>
-        Para ejercer estos derechos, escríbenos a:
-        <a href="mailto:codefullstack@infinitummail.com">Soporte GESAC</a>
-      </p>
-      <h2 class="mt-4">8. Cambios en esta política</h2>
-      <p>
-        Podemos actualizar esta Política de Privacidad ocasionalmente para
-        reflejar cambios en nuestras prácticas o en la ley aplicable. La versión
-        vigente siempre estará disponible en el enlace público proporcionado en
-        Google Play.
-      </p>
-      <h2 class="mt-4">9. Contacto</h2>
-      <p>
-        Si tienes preguntas o inquietudes sobre esta Política de Privacidad,
-        puedes comunicarte con nosotros en:
-        <a href="mailto:codefullstack@infinitummail.com">Soporte GESAC</a>
-      </p>
-      <h2 class="mt-4">10. Política de terceros</h2>
-      <p>
-        Para los pagos, la aplicación utiliza servicios de terceros (Stripe). Te
-        recomendamos leer su Política de Privacidad para conocer cómo manejan
-        tus datos financieros:
-        <a href="https://stripe.com/privacy" target="_blank"
-          >https://stripe.com/privacy</a
-        >
-      </p>
+    :root {
+      --ink: #0a0c10;
+      --accent: #c8ff00;
+      --mid: #1a1f2e;
+      --muted: #6b7280;
+      --border: rgba(255,255,255,0.08);
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+      --serif: 'Instrument Serif', serif;
+      --text: #e8e6e1;
+      --text-dim: rgba(232,230,225,0.55);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--text);
+      font-family: var(--display);
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 60px 80px;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,255,0,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-bottom: 32px;
+    }
+    .badge-line { width: 32px; height: 1px; background: var(--accent); }
+    .badge-text {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 0.94;
+      margin-bottom: 32px;
+    }
+
+    h1 em {
+      font-family: var(--serif); font-style: italic;
+      font-weight: 400; color: var(--accent);
+    }
+
+    .hero-meta {
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .meta-label {
+      font-family: var(--mono); font-size: 10px; color: var(--muted);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .meta-value { font-size: 14px; color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 60px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR INDEX ── */
+    .sidebar {
+      position: sticky; top: 85px;
+    }
+
+    .sidebar-title {
+      font-family: var(--mono); font-size: 10px; color: var(--muted);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--mono); font-size: 12px;
+      color: var(--muted); text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .sidebar-nav a:hover { color: var(--text); }
+    .sidebar-nav a.active { color: var(--accent); }
+
+    .sidebar-nav a .num {
+      font-size: 10px; color: rgba(200,255,0,0.4);
+      min-width: 20px;
+    }
+
+    /* ── CONTENT ── */
+    .content { min-width: 0; }
+
+    .policy-section {
+      margin-bottom: 72px;
+      padding-bottom: 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .policy-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .section-num {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 24px; line-height: 1.2;
+    }
+
+    p {
+      font-size: 15px; line-height: 1.8;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    p strong {
+      color: var(--text); font-weight: 600;
+    }
+
+    ul {
+      margin: 16px 0; padding-left: 0;
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    ul li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; line-height: 1.7; color: var(--text-dim);
+    }
+
+    ul li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); opacity: 0.6;
+      flex-shrink: 0; margin-top: 8px;
+    }
+
+    /* highlight box */
+    .highlight {
+      background: rgba(200,255,0,0.05);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .highlight p { color: rgba(232,230,225,0.75); margin: 0; font-size: 14px; }
+    .highlight strong { color: var(--accent); }
+
+    /* info box */
+    .info-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 4px;
+      margin: 24px 0;
+    }
+    .info-box-title {
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* contact card */
+    .contact-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px;
+      margin-top: 24px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .contact-icon {
+      width: 36px; height: 36px; border: 1px solid rgba(200,255,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); flex-shrink: 0;
+    }
+    .contact-icon svg { width: 16px; height: 16px; }
+    .contact-label {
+      font-family: var(--mono); font-size: 10px; color: var(--muted);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .contact-val { font-size: 14px; color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 60px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy {
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 20px 24px; }
+      .hero { padding: 60px 24px 48px; }
+      .layout { grid-template-columns: 1fr; padding: 48px 24px; gap: 48px; }
+      .sidebar { position: static; }
+      footer { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark"><span>SH</span></div>
+    <div class="nav-logo-text"><strong>SoftHeron</strong> / Tecnología</div>
+  </a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l7 7-7 7"/></svg>
+      Volver al inicio
+    </a>
+    <a href="/#contacto" class="nav-cta-nav">Iniciar proyecto →</a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile">
+  <a href="/">← Volver al inicio</a>
+  <a href="/#contacto" class="nav-cta-nav">Iniciar proyecto →</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-line"></div>
+      <div class="badge-text">Documento Legal</div>
     </div>
-  </body>
+    <h1>Política de<br><em>Privacidad</em></h1>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Aplicación</span>
+        <span class="meta-value">GESAC Condóminos</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Última actualización</span>
+        <span class="meta-value">Junio 2025</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Responsable</span>
+        <span class="meta-value">Innovación & Tecnología — SoftHeron</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Contenido</div>
+    <ul class="sidebar-nav">
+      <li><a href="#s1"><span class="num">01</span> Información que recopilamos</a></li>
+      <li><a href="#s2"><span class="num">02</span> Uso de la información</a></li>
+      <li><a href="#s3"><span class="num">03</span> Almacenamiento y seguridad</a></li>
+      <li><a href="#s4"><span class="num">04</span> Compartir información</a></li>
+      <li><a href="#s5"><span class="num">05</span> Derechos del usuario</a></li>
+      <li><a href="#s6"><span class="num">06</span> Cookies y rastreo</a></li>
+      <li><a href="#s7"><span class="num">07</span> Menores de edad</a></li>
+      <li><a href="#s8"><span class="num">08</span> Cambios a esta política</a></li>
+      <li><a href="#s9"><span class="num">09</span> Contacto</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="highlight">
+      <p>Esta Política de Privacidad describe cómo <strong>Innovación & Tecnología — SoftHeron</strong> recopila, usa y protege la información personal de los usuarios de la aplicación <strong>GESAC Condóminos</strong>. Al utilizar la aplicación, aceptas las prácticas descritas en este documento.</p>
+    </div>
+
+    <!-- 1 -->
+    <section class="policy-section" id="s1">
+      <div class="section-num">01 —</div>
+      <h2>Información que recopilamos</h2>
+      <p>Para brindar el servicio de administración condominal, GESAC Condóminos recopila los siguientes tipos de información:</p>
+
+      <div class="info-box">
+        <div class="info-box-title">Datos de registro y perfil</div>
+        <ul>
+          <li>Nombre completo del propietario o residente</li>
+          <li>Correo electrónico y número de teléfono de contacto</li>
+          <li>Número de unidad, departamento o lote</li>
+          <li>Datos del condominio o fraccionamiento al que pertenece</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-title">Datos financieros y de gestión</div>
+        <ul>
+          <li>Historial de pagos de cuotas de mantenimiento</li>
+          <li>Estado de cuenta y saldos pendientes</li>
+          <li>Registros de solicitudes de mantenimiento</li>
+          <li>Documentos subidos por el usuario (comprobantes, identificaciones)</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-title">Datos técnicos del dispositivo</div>
+        <ul>
+          <li>Dirección IP y tipo de dispositivo</li>
+          <li>Sistema operativo y versión de la aplicación</li>
+          <li>Registros de acceso (fecha, hora, acciones realizadas)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="policy-section" id="s2">
+      <div class="section-num">02 —</div>
+      <h2>Uso de la información</h2>
+      <p>Utilizamos la información recopilada exclusivamente para los siguientes fines:</p>
+      <ul>
+        <li>Gestionar la cuenta del usuario y su acceso a la plataforma</li>
+        <li>Procesar y registrar pagos de cuotas de mantenimiento</li>
+        <li>Enviar notificaciones sobre estados de cuenta, adeudos, comunicados del condominio y avisos de mantenimiento</li>
+        <li>Generar reportes financieros y administrativos para la mesa directiva del condominio</li>
+        <li>Atender solicitudes de soporte técnico o mantenimiento</li>
+        <li>Mejorar la funcionalidad y experiencia de uso de la aplicación</li>
+        <li>Cumplir obligaciones legales aplicables</li>
+      </ul>
+      <p><strong>No utilizamos los datos para fines publicitarios ni los vendemos a terceros bajo ninguna circunstancia.</strong></p>
+    </section>
+
+    <!-- 3 -->
+    <section class="policy-section" id="s3">
+      <div class="section-num">03 —</div>
+      <h2>Almacenamiento y seguridad</h2>
+      <p>La información de los usuarios se almacena en servidores seguros con las siguientes medidas de protección:</p>
+      <ul>
+        <li>Cifrado de datos en tránsito mediante protocolo <strong>HTTPS/TLS</strong></li>
+        <li>Acceso restringido a la base de datos con autenticación de múltiples factores</li>
+        <li>Contraseñas almacenadas con algoritmos de hash unidireccional (bcrypt)</li>
+        <li>Copias de seguridad periódicas en entornos aislados</li>
+        <li>Monitoreo continuo de accesos no autorizados</li>
+      </ul>
+      <div class="highlight">
+        <p>Los datos se conservan durante el tiempo que el usuario mantenga una cuenta activa en la plataforma. Al solicitar la eliminación de cuenta, los datos personales serán borrados en un plazo máximo de <strong>30 días hábiles</strong>, salvo obligación legal de conservarlos.</p>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="policy-section" id="s4">
+      <div class="section-num">04 —</div>
+      <h2>Compartir información con terceros</h2>
+      <p>GESAC Condóminos <strong>no vende, alquila ni comparte</strong> información personal de los usuarios con terceros con fines comerciales. La información puede compartirse únicamente en los siguientes casos limitados:</p>
+      <ul>
+        <li><strong>Administrador del condominio:</strong> El administrador autorizado del condominio tiene acceso a los datos de los residentes de su desarrollo, estrictamente para fines de gestión administrativa.</li>
+        <li><strong>Proveedores de servicio técnico:</strong> Empresas contratadas para el mantenimiento de la infraestructura tecnológica, bajo acuerdos de confidencialidad.</li>
+        <li><strong>Obligaciones legales:</strong> Cuando sea requerido por autoridad competente mediante orden judicial o administrativa conforme a la legislación mexicana vigente.</li>
+      </ul>
+    </section>
+
+    <!-- 5 -->
+    <section class="policy-section" id="s5">
+      <div class="section-num">05 —</div>
+      <h2>Derechos del usuario (ARCO)</h2>
+      <p>Conforme a la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</strong> de México, los usuarios tienen los siguientes derechos:</p>
+      <ul>
+        <li><strong>Acceso:</strong> Conocer qué datos personales tenemos sobre usted y cómo los utilizamos</li>
+        <li><strong>Rectificación:</strong> Solicitar la corrección de datos inexactos o incompletos</li>
+        <li><strong>Cancelación:</strong> Pedir la eliminación de sus datos cuando ya no sean necesarios para los fines para los que fueron recopilados</li>
+        <li><strong>Oposición:</strong> Oponerse al uso de sus datos para fines específicos</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, envíe una solicitud a nuestro correo de contacto con: nombre completo, copia de identificación oficial, descripción clara del derecho que desea ejercer y datos de contacto para respuesta. Respondemos en un plazo máximo de <strong>20 días hábiles</strong>.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="policy-section" id="s6">
+      <div class="section-num">06 —</div>
+      <h2>Cookies y tecnologías de rastreo</h2>
+      <p>La aplicación GESAC Condóminos utiliza cookies de sesión estrictamente necesarias para mantener al usuario autenticado durante su uso de la plataforma. <strong>No utilizamos cookies de rastreo publicitario ni de análisis de comportamiento de terceros.</strong></p>
+      <ul>
+        <li>Cookies de sesión: se eliminan automáticamente al cerrar la aplicación</li>
+        <li>Almacenamiento local: utilizado únicamente para preferencias de interfaz del usuario</li>
+      </ul>
+    </section>
+
+    <!-- 7 -->
+    <section class="policy-section" id="s7">
+      <div class="section-num">07 —</div>
+      <h2>Menores de edad</h2>
+      <p>GESAC Condóminos está dirigida a personas mayores de 18 años. No recopilamos conscientemente información personal de menores de edad. Si usted es padre o tutor y tiene motivos para creer que su hijo ha proporcionado información personal a través de nuestra aplicación, contáctenos de inmediato para proceder con la eliminación de dicha información.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="policy-section" id="s8">
+      <div class="section-num">08 —</div>
+      <h2>Cambios a esta política</h2>
+      <p>Podemos actualizar esta Política de Privacidad periódicamente para reflejar cambios en nuestras prácticas, en la legislación aplicable o en las funcionalidades de la aplicación. Cuando se realicen cambios significativos, notificaremos a los usuarios a través de:</p>
+      <ul>
+        <li>Notificación dentro de la aplicación al iniciar sesión</li>
+        <li>Correo electrónico al email registrado en la cuenta</li>
+        <li>Actualización de la fecha de "Última actualización" en esta página</li>
+      </ul>
+      <p>El uso continuado de la aplicación tras la publicación de cambios constituye la aceptación de la política actualizada.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="policy-section" id="s9">
+      <div class="section-num">09 —</div>
+      <h2>Contacto</h2>
+      <p>Para cualquier duda, solicitud relacionada con sus datos personales o para ejercer sus derechos ARCO, puede comunicarse con nosotros a través de los siguientes medios:</p>
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Correo electrónico</div>
+            <div class="contact-val">adminsoftheron@gesacadmin.com</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Responsable</div>
+            <div class="contact-val">Innovación & Tecnología — SoftHeron</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Tiempo de respuesta</div>
+            <div class="contact-val">Máximo 20 días hábiles</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/525548822343" target="_blank" rel="noopener" style="
+  position: fixed; bottom: 32px; right: 32px; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px;
+  background: #25d366;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  transition: background 0.2s, transform 0.2s;
+" onmouseover="this.style.background='#1ebe5d';this.style.transform='translateY(-3px)'"
+   onmouseout="this.style.background='#25d366';this.style.transform='translateY(0)'">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.508 5.83L.057 23.25a.75.75 0 00.92.921l5.4-1.43A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.725 9.725 0 01-4.964-1.362l-.355-.212-3.685.975.985-3.6-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+  </svg>
+</a>
+
+<footer>
+  <span class="footer-copy">© 2025 Innovación & Tecnología — SoftHeron. JMEB Todos los derechos reservados.</span>
+  <span class="footer-copy">GESAC Condóminos — Política de Privacidad</span>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('.policy-section');
+  const links = document.querySelectorAll('.sidebar-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const id = entry.target.getAttribute('id');
+        const active = document.querySelector(`.sidebar-nav a[href="#${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
 </html>

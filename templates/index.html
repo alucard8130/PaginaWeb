@@ -1,225 +1,587 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2293386253125715"
-     crossorigin="anonymous"></script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Despacho Fiscal y Contable SAM</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        background: #232946;
-      }
-      .hero {
-        background: linear-gradient(90deg, #232946 60%, #eebbc3 100%);
-        color: #fff;
-        padding: 60px 0 40px 0;
-        text-align: center;
-      }
-      .testimonio-img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-    </style>
-    
-  </head>
-  <body>
-    {% include "navbar.html" %}
-    <section class="hero">
-      <div class="container">
-        <h1 class="display-4 fw-bold">Despacho Fiscal y Contable SAM</h1>
-        <p class="lead mt-3">
-          Servicios fiscales y contables de alta calidad, personalizados para
-          cada cliente.
-        </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovación & Tecnología — SoftHeron</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0a0c10;
+      --accent: #c8ff00;
+      --muted: #6b7280;
+      --border: rgba(255,255,255,0.08);
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+      --serif: 'Instrument Serif', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--ink); color: #e8e6e1; font-family: var(--display); overflow-x: hidden; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 64px;
+      background: rgba(10,12,16,0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+
+    .nav-logo-mark {
+      width: 28px; height: 28px; background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%);
+      flex-shrink: 0;
+    }
+    .nav-logo-mark span {
+      font-family: var(--display); font-size: 12px; font-weight: 800; color: #0a0c10;
+    }
+    .nav-logo-text {
+      font-family: var(--mono); font-size: 11px;
+      color: rgba(232,230,225,0.55); letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .nav-logo-text strong { color: #e8e6e1; font-weight: 400; }
+
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+
+    .nav-link {
+      font-family: var(--mono); font-size: 11px; color: rgba(232,230,225,0.45);
+      text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 8px 14px; border-radius: 3px; transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover { color: #e8e6e1; background: rgba(255,255,255,0.05); }
+
+    .nav-cta {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: #0a0c10; background: var(--accent); padding: 9px 22px; text-decoration: none;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+      transition: background 0.15s; margin-left: 8px;
+    }
+    .nav-cta:hover { background: #d4ff26; }
+
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span { display: block; height: 1px; background: rgba(232,230,225,0.5); transition: all 0.2s; }
+    .nav-hamburger span:nth-child(1) { width: 20px; }
+    .nav-hamburger span:nth-child(2) { width: 20px; }
+    .nav-hamburger span:nth-child(3) { width: 12px; background: var(--accent); }
+
+    .nav-mobile {
+      display: none; flex-direction: column;
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 199;
+      background: rgba(10,12,16,0.98);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      padding-bottom: 16px;
+    }
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+      font-family: var(--mono); font-size: 12px;
+      color: rgba(232,230,225,0.55); text-decoration: none;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav-mobile .nav-cta {
+      margin: 12px 24px 0; display: block; text-align: center;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; padding-top: 64px;
+      display: grid; grid-template-rows: 1fr auto;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(200,255,0,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(99,102,241,0.08) 0%, transparent 55%),
+        var(--ink);
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative; z-index: 5;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px; max-width: 1100px;
+    }
+
+    .hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+    .hero-eyebrow-line { width: 40px; height: 1px; background: var(--accent); }
+    .hero-eyebrow-text {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 7vw, 100px); font-weight: 800;
+      line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 36px;
+    }
+    .hero-title em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
+
+    .hero-sub {
+      max-width: 560px; font-size: 16px; line-height: 1.7;
+      color: rgba(232,230,225,0.65); margin-bottom: 52px;
+    }
+
+    .hero-cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent); color: var(--ink);
+      font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 16px 32px; border: none; cursor: pointer; text-decoration: none;
+      transition: all 0.2s;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    }
+    .btn-primary:hover { background: #d4ff26; transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: rgba(232,230,225,0.7);
+      font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 16px 0; border: none; cursor: pointer; text-decoration: none;
+      border-bottom: 1px solid rgba(232,230,225,0.2); transition: all 0.2s;
+    }
+    .btn-ghost:hover { color: #e8e6e1; border-color: rgba(232,230,225,0.6); }
+
+    .hero-stats {
+      position: relative; z-index: 5;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .stat { padding: 36px 60px; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-number { font-size: 44px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+    .stat-number span { color: var(--accent); }
+    .stat-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 120px 60px; position: relative; }
+    .dark-section { background: #070910; padding: 120px 60px; }
+    .process-section { padding: 120px 60px; }
+
+    .section-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 80px; gap: 40px; flex-wrap: wrap;
+    }
+    .section-label {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .section-title { font-size: clamp(36px, 4vw, 60px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+    .section-desc { max-width: 380px; font-size: 15px; line-height: 1.7; color: rgba(232,230,225,0.55); align-self: flex-end; }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; background: rgba(255,255,255,0.06); }
+    .service-card { background: var(--ink); padding: 48px 40px; position: relative; overflow: hidden; transition: background 0.3s; }
+    .service-card:hover { background: #111520; }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 0; background: var(--accent);
+      transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card.col-6 { grid-column: span 6; }
+    .service-card.col-4 { grid-column: span 4; }
+    .service-index { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 32px; }
+    .service-icon { width: 48px; height: 48px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(200,255,0,0.2); color: var(--accent); }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-name { font-size: 20px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+    .service-desc { font-size: 14px; line-height: 1.65; color: rgba(232,230,225,0.5); }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .tag { font-family: var(--mono); font-size: 10px; color: rgba(200,255,0,0.7); letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(200,255,0,0.2); padding: 4px 10px; }
+
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: 80px; }
+    .project-card { position: relative; overflow: hidden; cursor: pointer; }
+    .project-card.col-7 { grid-column: span 7; }
+    .project-card.col-5 { grid-column: span 5; }
+    .project-card.col-4 { grid-column: span 4; }
+    .project-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; filter: grayscale(30%) brightness(0.7); transition: filter 0.5s, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+    .project-card:hover .project-img { filter: grayscale(0%) brightness(0.85); transform: scale(1.04); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,9,16,0.92) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; }
+    .project-sector { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+    .project-name { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
+    .project-caption { font-size: 13px; color: rgba(232,230,225,0.55); line-height: 1.5; }
+    .project-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-family: var(--mono); font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0; transform: translateY(8px); transition: all 0.3s; }
+    .project-card:hover .project-link { opacity: 1; transform: translateY(0); }
+
+    /* Process */
+    .process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); margin-top: 80px; }
+    .process-step { background: var(--ink); padding: 48px 36px; position: relative; }
+    .step-number { font-family: var(--mono); font-size: 64px; font-weight: 300; color: rgba(200,255,0,0.12); line-height: 1; margin-bottom: 28px; }
+    .step-title { font-size: 18px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+    .step-desc { font-size: 13px; line-height: 1.7; color: rgba(232,230,225,0.5); }
+    .step-connector { position: absolute; top: 48px; right: -1px; width: 24px; height: 24px; border-top: 1px solid var(--accent); border-right: 1px solid var(--accent); transform: translateX(50%) rotate(45deg); background: var(--ink); z-index: 2; }
+    .process-step:last-child .step-connector { display: none; }
+
+    /* Guarantee */
+    .guarantee { background: var(--accent); color: var(--ink); padding: 80px 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .guarantee-text { font-size: clamp(28px, 3.5vw, 48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; max-width: 620px; }
+    .guarantee-text em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+    .guarantee-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--accent); font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 18px 36px; text-decoration: none; transition: all 0.2s; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+    .guarantee-cta:hover { background: #1a1f2e; }
+
+    /* Contact */
+    .contact-section { padding: 120px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+    .contact-title { font-size: clamp(36px, 4vw, 56px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 28px; }
+    .contact-info { margin-top: 48px; display: flex; flex-direction: column; gap: 24px; }
+    .contact-info-item { display: flex; align-items: center; gap: 16px; }
+    .contact-info-icon { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent); }
+    .contact-info-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+    .contact-info-value { font-size: 14px; color: rgba(232,230,225,0.8); }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+    .form-input, .form-textarea { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #e8e6e1; font-family: var(--display); font-size: 14px; padding: 14px 18px; outline: none; transition: border-color 0.2s; width: 100%; }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(200,255,0,0.4); }
+    .form-textarea { min-height: 140px; resize: vertical; }
+    .form-btn { background: var(--accent); color: var(--ink); border: none; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 18px 36px; align-self: flex-start; transition: all 0.2s; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+    .form-btn:hover { background: #d4ff26; transform: translateY(-2px); }
+
+    /* Footer */
+    footer { padding: 40px 60px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .footer-privacy { font-family: var(--mono); font-size: 11px; color: rgba(200,255,0,0.5); letter-spacing: 0.08em; text-decoration: none; transition: color 0.15s; }
+    .footer-privacy:hover { color: var(--accent); }
+
+    /* Animations */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .navbar { padding: 0 24px; }
+      .nav-link, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-content { padding: 60px 24px; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .stat { padding: 28px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .section, .dark-section, .process-section { padding: 80px 24px; }
+      .contact-section { padding: 80px 24px; grid-template-columns: 1fr; gap: 60px; }
+      .service-card.col-6, .service-card.col-4 { grid-column: span 12; }
+      .project-card.col-7, .project-card.col-5, .project-card.col-4 { grid-column: span 12; }
+      .process-row { grid-template-columns: 1fr 1fr; }
+      .guarantee { padding: 60px 24px; }
+      .section-header { flex-direction: column; }
+      footer { padding: 32px 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .process-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark"><span>SH</span></div>
+    <div class="nav-logo-text"><strong>SoftHeron</strong> / Tecnología</div>
+  </a>
+  <div class="nav-right">
+    <a href="/politica_privacidad_gesac_condominos" class="nav-link">Privacidad GESAC</a>
+    <a href="#contacto" class="nav-cta">Iniciar proyecto →</a>
+    <button class="nav-hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile">
+  <a href="/politica_privacidad_gesac_condominos">Privacidad GESAC →</a>
+  <a href="#contacto" class="nav-cta">Iniciar proyecto →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">
+      <div class="hero-eyebrow-line"></div>
+      <div class="hero-eyebrow-text">Transformación Digital Empresarial</div>
+    </div>
+    <h1 class="hero-title fade-up delay-1">
+      Software que<br><em>trabaja</em><br>para tu negocio.
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Diseñamos y desarrollamos sistemas web a la medida de tu empresa.
+      Soluciones escalables, seguras y accesibles — sin importar el tamaño de tu operación.
+    </p>
+    <div class="hero-cta-row fade-up delay-3">
+      <a href="#contacto" class="btn-primary">
+        Iniciar Proyecto
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#soluciones" class="btn-ghost">
+        Ver Soluciones
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats fade-up delay-4">
+    <div class="stat">
+      <div class="stat-number">100<span>%</span></div>
+      <div class="stat-label">Código a la medida</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0<span>$</span></div>
+      <div class="stat-label">Pago hasta que funcione</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Escalabilidad garantizada</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUCIONES ── -->
+<section class="section" id="soluciones">
+  <div class="section-header">
+    <div>
+      <div class="section-label">¿Qué desarrollamos?</div>
+      <h2 class="section-title">Soluciones para<br>cada sector</h2>
+    </div>
+    <p class="section-desc">Sistemas personalizados para distintos rubros empresariales. Adaptados a tu flujo de trabajo, no al revés.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card col-6">
+      <div class="service-index">01 —</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
       </div>
-    </section>
-    <section class="container my-5">
-      <div class="row text-center mb-4">
-        <h2 class="fw-bold text-white">Nuestros Servicios</h2>
-        <p class="text-white">
-          Ofrecemos una amplia gama de servicios, incluyendo:
-        </p>
+      <div class="service-name">Sistemas Administrativos Web</div>
+      <p class="service-desc">Automatización de procesos internos, gestión de recursos humanos, operaciones y reportes ejecutivos en tiempo real desde cualquier dispositivo.</p>
+      <div class="service-tags"><span class="tag">ERP</span><span class="tag">Dashboard</span><span class="tag">Reportes</span><span class="tag">Usuarios</span></div>
+    </div>
+    <div class="service-card col-6">
+      <div class="service-index">02 —</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-3M16 3h5v5M10 14L21 3"/></svg>
       </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Declaraciones Fiscales</h5>
-              <p class="card-text">
-                Elaboración de declaraciones fiscales mensuales y anuales.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Contabilidad General</h5>
-              <p class="card-text">
-                Registro de operaciones, gestión de nómina y obligaciones
-                laborales.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow">
-            <div class="card-body">
-              <h5 class="card-title">Asesoría y Auditoría</h5>
-              <p class="card-text">
-                Asesoría fiscal y financiera, auditoría interna y externa,
-                trámites ante el SAT.
-              </p>
-            </div>
-          </div>
-        </div>
+      <div class="service-name">Sistemas Contables Online</div>
+      <p class="service-desc">Facturación electrónica, control de gastos, estados financieros y reportes fiscales integrados en una plataforma segura y multi-usuario.</p>
+      <div class="service-tags"><span class="tag">Facturación</span><span class="tag">Fiscal</span><span class="tag">Conciliación</span></div>
+    </div>
+    <div class="service-card col-4">
+      <div class="service-index">03 —</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       </div>
-      <div class="col-md-12">
-        <div class="card h-100 shadow mt-4">
-          <div class="card-body">
-            <h5 class="card-title">Otros Servicios Especializados</h5>
-            <ul class="mb-0">
-              <li><strong>Facturación electrónica</strong></li>
-              <li><strong>Elaboración de estados financieros</strong></li>
-              <li><strong>Determinación y cálculo de impuestos</strong></li>
-              <li><strong>Regularización de obligaciones fiscales</strong></li>
-            </ul>
-          </div>
-        </div>
+      <div class="service-name">Gestión Inmobiliaria</div>
+      <p class="service-desc">Administra propiedades, contratos, inquilinos, cobranza y mantenimiento desde una sola plataforma.</p>
+      <div class="service-tags"><span class="tag">Propiedades</span><span class="tag">Contratos</span></div>
+    </div>
+    <div class="service-card col-4">
+      <div class="service-index">04 —</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       </div>
-    </section>
-    <!-- Testimonios -->
-    <section class="container my-5">
-      <div class="row text-center mb-4">
-        <h2 class="fw-bold text-white">Testimonios</h2>
-        <p class="text-white">Lo que opinan nuestros clientes:</p>
+      <div class="service-name">Comercio &amp; POS</div>
+      <p class="service-desc">Sistemas POS, inventario inteligente, ventas en línea y CRM para tiendas físicas y virtuales.</p>
+      <div class="service-tags"><span class="tag">POS</span><span class="tag">Inventario</span></div>
+    </div>
+    <div class="service-card col-4">
+      <div class="service-index">05 —</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
       </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <img
-                  src="https://randomuser.me/api/portraits/men/32.jpg"
-                  class="testimonio-img me-3"
-                  alt="Cliente 1"
-                />
-                <div>
-                  <h6 class="mb-0">Eduardo Del Pozo</h6>
-                  <small class="text-muted">Director de Operaciones</small>
-                </div>
-              </div>
-              <p class="card-text">
-                "El equipo de SAM nos ayudó a cumplir con todas nuestras
-                obligaciones fiscales de manera puntual y eficiente. ¡Excelente
-                atención!"
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <img
-                  src="https://randomuser.me/api/portraits/women/44.jpg"
-                  class="testimonio-img me-3"
-                  alt="Cliente 2"
-                />
-                <div>
-                  <h6 class="mb-0">Laura Edith Ruvalcaba</h6>
-                  <small class="text-muted">Contadora Pública</small>
-                </div>
-              </div>
-              <p class="card-text">
-                "La asesoría fiscal que recibimos fue clave para optimizar
-                nuestros recursos y evitar problemas con el SAT."
-              </p>
-            </div>
-          </div>
-        </div>
+      <div class="service-name">Gestión de Servicios</div>
+      <p class="service-desc">Agenda, seguimiento de clientes, órdenes de servicio y reportes para cualquier empresa de servicios.</p>
+      <div class="service-tags"><span class="tag">Agenda</span><span class="tag">CRM</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROYECTOS ── -->
+<section class="dark-section" id="proyectos">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Proyectos recientes</div>
+      <h2 class="section-title">Resultados<br>reales</h2>
+    </div>
+    <p class="section-desc">Cada sistema es diseñado desde cero para los procesos específicos del cliente. Sin plantillas genéricas.</p>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card col-7">
+      <img class="project-img" src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/dashboard_cartera3.png" alt="Sistema Condominal" />
+      <div class="project-overlay">
+        <div class="project-sector">Sector Inmobiliario</div>
+        <div class="project-name">Sistema Administrativo Condominal</div>
+        <div class="project-caption">Gestión integral de condominios: cobranza, mantenimiento, comunicados y reportes financieros.</div>
+        <a href="https://adminsoftheron.onrender.com" class="project-link" target="_blank">Ingresar al sistema →</a>
       </div>
-    </section>
-    <!-- Contacto -->
-    <section class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow">
-        <div class="card-body">
-          <h2 class="fw-bold mb-4 text-center">Contacto</h2>
-          <form method="post">
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input
-                type="text"
-                class="form-control"
-                id="nombre"
-                name="nombre"
-                placeholder="Tu nombre"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="nombre@ejemplo.com"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="mensaje" class="form-label">Mensaje</label>
-              <textarea
-                class="form-control"
-                id="mensaje"
-                name="mensaje"
-                rows="4"
-                placeholder="¿En qué podemos ayudarte?"
-                required
-              ></textarea>
-            </div>
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary">
-                Enviar mensaje
-              </button>
-            </div>
-          </form>
-          {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
-          <div class="text-center mt-3">
-            <small>
-              O escríbenos a
-              <a href="mailto:servicioscontablesjme@gmail.com">
-                servicioscontablesjme@gmail.com
-              </a>
-            </small>
-          </div>
-        </div>
+    </div>
+    <div class="project-card col-5">
+      <img class="project-img" src="https://paginaweb-ro9v.onrender.com/static/imagenes/gesac/pag_web.png" alt="Portal Inmobiliario" />
+      <div class="project-overlay">
+        <div class="project-sector">Sector Inmobiliario</div>
+        <div class="project-name">Portal Inmobiliario</div>
+        <div class="project-caption">Gestión de propiedades, clientes, contratos y pagos en línea para agencias.</div>
+        <span class="project-link">En desarrollo →</span>
+      </div>
+    </div>
+    <div class="project-card col-4">
+      <img class="project-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Sistema Contable" />
+      <div class="project-overlay">
+        <div class="project-sector">Contabilidad</div>
+        <div class="project-name">Sistema Contable Online</div>
+        <div class="project-caption">Facturación electrónica, reportes fiscales y control de clientes para despachos.</div>
+        <span class="project-link">Próximamente →</span>
+      </div>
+    </div>
+    <div class="project-card col-4">
+      <img class="project-img" src="https://paginaweb-ro9v.onrender.com/static/imagenes/conta.jpg" alt="Gestión de Servicios" />
+      <div class="project-overlay">
+        <div class="project-sector">Servicios</div>
+        <div class="project-name">Gestión de Servicios</div>
+        <div class="project-caption">Agenda, seguimiento de clientes, reportes y facturación integrados.</div>
+      </div>
+    </div>
+    <div class="project-card col-4">
+      <img class="project-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="POS Comercios" />
+      <div class="project-overlay">
+        <div class="project-sector">Comercio</div>
+        <div class="project-name">Sistema POS Multi-sucursal</div>
+        <div class="project-caption">Control de inventario, ventas y clientes para tiendas físicas y en línea.</div>
+        <span class="project-link">Próximamente →</span>
       </div>
     </div>
   </div>
 </section>
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-      <small
-        >© 2025 Despacho Fiscal y Contable SAM. Todos los derechos
-        reservados.</small
-      >
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+
+<!-- ── PROCESO ── -->
+<section class="process-section" id="proceso">
+  <div class="section-header">
+    <div>
+      <div class="section-label">Nuestra metodología</div>
+      <h2 class="section-title">Del concepto<br>a producción</h2>
+    </div>
+    <p class="section-desc">Un proceso estructurado que garantiza resultados predecibles y sin sorpresas en costos o tiempos.</p>
+  </div>
+  <div class="process-row">
+    <div class="process-step">
+      <div class="step-number">01</div>
+      <div class="step-title">Análisis &amp; Diagnóstico</div>
+      <p class="step-desc">Entendemos tus procesos actuales, identificamos cuellos de botella y definimos el alcance exacto del sistema.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">02</div>
+      <div class="step-title">Diseño &amp; Prototipo</div>
+      <p class="step-desc">Creamos la arquitectura del sistema y un prototipo funcional que puedes probar antes de aprobar el desarrollo completo.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">03</div>
+      <div class="step-title">Desarrollo &amp; Pruebas</div>
+      <p class="step-desc">Desarrollamos el sistema en iteraciones cortas con entregables periódicos. Pruebas exhaustivas antes de cada avance.</p>
+      <div class="step-connector"></div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">04</div>
+      <div class="step-title">Lanzamiento &amp; Soporte</div>
+      <p class="step-desc">Implementamos el sistema en tu entorno, capacitamos a tu equipo y brindamos soporte continuo post-lanzamiento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUARANTEE ── -->
+<div class="guarantee">
+  <div class="guarantee-text">No pagas hasta que tu sistema esté <em>funcionando</em> en producción.</div>
+  <a href="#contacto" class="guarantee-cta">Conversemos →</a>
+</div>
+
+<!-- ── CONTACTO ── -->
+<section class="contact-section" id="contacto">
+  <div class="contact-left">
+    <div class="section-label">Contacto</div>
+    <h2 class="contact-title">Cuéntanos<br>tu proyecto</h2>
+    <p style="font-size:15px;line-height:1.7;color:rgba(232,230,225,0.55);margin-top:16px;">
+      Respondemos en menos de 24 horas. La primera consulta es sin costo y sin compromiso.
+    </p>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <div class="contact-info-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">adminsoftheron@gesacadmin.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form class="contact-form" onsubmit="return false;">
+    <div class="form-group">
+      <label class="form-label">Nombre completo</label>
+      <input class="form-input" type="text" placeholder="Tu nombre" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Correo electrónico</label>
+      <input class="form-input" type="email" placeholder="correo@empresa.com" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Describe tu proyecto</label>
+      <textarea class="form-textarea" placeholder="¿Qué sistema necesitas? ¿Cuál es el problema que quieres resolver?"></textarea>
+    </div>
+    <button class="form-btn" type="submit">Enviar mensaje →</button>
+  </form>
+</section>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/525548822343" target="_blank" rel="noopener" style="
+  position: fixed; bottom: 32px; right: 32px; z-index: 999;
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px;
+  background: #25d366;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  transition: background 0.2s, transform 0.2s;
+" onmouseover="this.style.background='#1ebe5d';this.style.transform='translateY(-3px)'"
+   onmouseout="this.style.background='#25d366';this.style.transform='translateY(0)'">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.508 5.83L.057 23.25a.75.75 0 00.92.921l5.4-1.43A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.725 9.725 0 01-4.964-1.362l-.355-.212-3.685.975.985-3.6-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+  </svg>
+</a>
+
+<footer>
+  <div class="footer-copy">© 2025 Innovación &amp; Tecnología — SoftHeron. JMEB Todos los derechos reservados.</div>
+  <a href="/politica_privacidad_gesac_condominos" class="footer-privacy">Política de Privacidad GESAC →</a>
+</footer>
+
+</body>
 </html>

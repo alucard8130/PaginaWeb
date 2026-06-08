@@ -25,90 +25,80 @@ app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER")
 mail = Mail(app)
 
 
-@app.route("/descargas")
-def descargas():
-    return render_template("descargas.html")
+# @app.route("/descargas")
+# def descargas():
+#     return render_template("descargas.html")
 
 
-@app.route("/tec", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
-        nombre = request.form["nombre"]
-        email = request.form["email"]
-        mensaje = request.form["mensaje"]
+# @app.route("/tec", methods=["GET", "POST"])
+# def index():
+#     if request.method == "POST":
+#         nombre = request.form["nombre"]
+#         email = request.form["email"]
+#         mensaje = request.form["mensaje"]
 
-        msg = Message(
-            subject="Información de contacto desde la web",
-            recipients=["smart8130@hotmail.com"],
-            body=f"Nombre: {nombre}\nEmail: {email}\nMensaje:\n{mensaje}",
-        )
-        try:
-            mail.send(msg)
-            flash("¡Mensaje enviado correctamente!", "success")
-        except Exception as e:
-            flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
-        return redirect(url_for("index"))
+#         msg = Message(
+#             subject="Información de contacto desde la web",
+#             recipients=["smart8130@hotmail.com"],
+#             body=f"Nombre: {nombre}\nEmail: {email}\nMensaje:\n{mensaje}",
+#         )
+#         try:
+#             mail.send(msg)
+#             flash("¡Mensaje enviado correctamente!", "success")
+#         except Exception as e:
+#             flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
+#         return redirect(url_for("index"))
+#     return render_template("index.html")
+
+
+@app.route("/")
+def tec():
     return render_template("index.html")
 
 
-@app.route("/", methods=["GET", "POST"])
-def tec():
-    if request.method == "POST":
-        nombre = request.form["nombre"]
-        email = request.form["email"]
-        mensaje = request.form["mensaje"]
-
-        msg = Message(
-            subject="Información de contacto desde la web",
-            recipients=["servicioscontablesjme@gmail.com"],
-            body=f"Nombre: {nombre}\nEmail: {email}\nMensaje:\n{mensaje}",
-        )
-        try:
-            mail.send(msg)
-            flash("¡Mensaje enviado correctamente!", "success")
-        except Exception as e:
-            flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
-        return redirect(url_for("tec"))
-    return render_template("tec.html")
+# @app.route("/redes")
+# def redes():
+#     return render_template("redes.html")
 
 
-@app.route("/redes")
-def redes():
-    return render_template("redes.html")
-
-
-@app.route("/gestor_administrativo")
-def gestor_condominal():
-    return render_template("gestor_administrativo.html")
+# @app.route("/gestor_administrativo")
+# def gestor_condominal():
+#     return render_template("gestor_administrativo.html")
 
 
 # Ruta para registro de curso
-@app.route("/registro_curso", methods=["GET", "POST"])
-def registro_curso():
-    if request.method == "POST":
-        nombre = request.form.get("nombre")
-        email = request.form.get("email")
-        telefono = request.form.get("telefono")
-        curso = request.form.get("curso")
-        comentarios = request.form.get("comentarios")
-        # Enviar correo con Flask-Mail
-        msg = Message(
-            subject="Nuevo registro de curso",
-            recipients=["smart8130@hotmail.com"],
-            body=f"Nombre: {nombre}\nEmail: {email}\nTeléfono: {telefono}\nCurso: {curso}\nComentarios: {comentarios}",
-        )
-        try:
-            mail.send(msg)
-            flash("¡Registro enviado correctamente!", "success")
-        except Exception as e:
-            flash("Error al enviar el registro. Intenta más tarde.", "danger")
-    return render_template("registro_curso.html")
+# @app.route("/registro_curso", methods=["GET", "POST"])
+# def registro_curso():
+#     if request.method == "POST":
+#         nombre = request.form.get("nombre")
+#         email = request.form.get("email")
+#         telefono = request.form.get("telefono")
+#         curso = request.form.get("curso")
+#         comentarios = request.form.get("comentarios")
+#         # Enviar correo con Flask-Mail
+#         msg = Message(
+#             subject="Nuevo registro de curso",
+#             recipients=["smart8130@hotmail.com"],
+#             body=f"Nombre: {nombre}\nEmail: {email}\nTeléfono: {telefono}\nCurso: {curso}\nComentarios: {comentarios}",
+#         )
+#         try:
+#             mail.send(msg)
+#             flash("¡Registro enviado correctamente!", "success")
+#         except Exception as e:
+#             flash("Error al enviar el registro. Intenta más tarde.", "danger")
+#     return render_template("registro_curso.html")
 
 
 # Ruta para política de privacidad GESAC Condóminos
-@app.route("/politica_privacidad_gesac_condominos")
-def politica_privacidad_gesac_condominos():
-    return render_template("politica_privacidad_gesac_condominos.html")
+@app.route('/politica_privacidad_gesac_condominos')
+def politica():
+    return render_template('politica_privacidad_gesac_condominos.html')
+
+#ruta para index.html
+# @app.route("/index")
+# def index_page():
+#     return render_template("index.html")
+
 
 
 if __name__ == "__main__":
