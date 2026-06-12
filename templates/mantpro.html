@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MantPro — Gestión de mantenimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070910;
+      --surface: #0b111a;
+      --surface-2: #111827;
+      --border: rgba(255,255,255,0.08);
+      --accent: #c8ff00;
+      --primary: #2563eb;
+      --primary-strong: #1d4ed8;
+      --text: #e8e6e1;
+      --muted: #8a96a6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Syne', sans-serif;
+      background: radial-gradient(circle at top, rgba(37,99,235,.08), transparent 32%), var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, a { font: inherit; }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px 32px;
+      background: rgba(7,9,16,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #0a0c10;
+      font-weight: 800;
+    }
+
+    .nav-logo-text {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+      border-radius: 999px;
+      transition: background .2s, color .2s;
+    }
+
+    .nav-link.primary {
+      background: var(--accent);
+      color: #0a0c10;
+    }
+
+    .nav-link.secondary:hover {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .page-hero {
+      padding: 80px 32px 48px;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-copy { max-width: 620px; }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 0.98;
+      margin-bottom: 28px;
+    }
+
+    .hero-title em { font-style: normal; color: var(--primary); }
+
+    .hero-copy p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-card {
+      display: grid;
+      gap: 20px;
+      padding: 28px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .hero-card .store-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .hero-card .store-icon {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .page-section {
+      padding: 0 32px 72px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    #mantpro {
+      padding: 72px 0 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #mantpro::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 760px;
+      height: 760px;
+      background: radial-gradient(circle, rgba(37,99,235,.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .mp-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 48px;
+    }
+
+    .mp-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,.12);
+      border: 1px solid rgba(37,99,235,.24);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #60a5fa;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .mp-heading {
+      font-size: clamp(32px, 4.5vw, 52px);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .mp-heading em { color: var(--primary); font-style: normal; }
+
+    .mp-sub {
+      max-width: 640px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .mp-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .mp-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .mp-btn-primary:hover { background: var(--primary-strong); transform: translateY(-1px); }
+
+    .mp-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      font-weight: 700;
+    }
+
+    .mp-btn-secondary:hover { border-color: rgba(37,99,235,.4); }
+
+    .mp-screenshot {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 30px 70px rgba(0,0,0,.25);
+      display: block;
+    }
+
+    .mp-benefits-title,
+    .mp-plans-title,
+    .mp-downloads-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .mp-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 64px;
+    }
+
+    .mp-benefit-card {
+      background: var(--surface-2);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 26px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .mp-benefit-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(37,99,235,.35);
+    }
+
+    .mp-benefit-icon {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .mp-benefit-name {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .mp-benefit-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .mp-plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-bottom: 64px;
+    }
+
+    .mp-plan-card {
+      background: var(--surface-2);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .mp-plan-card.featured {
+      border-color: rgba(37,99,235,.36);
+      background: linear-gradient(180deg, rgba(15,23,42,.95), rgba(17,24,39,.98));
+    }
+
+    .mp-plan-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    .mp-plan-name {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .mp-plan-price {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .mp-plan-price span {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .mp-plan-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.75;
+    }
+
+    .mp-plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .mp-plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .mp-plan-features li::before {
+      content: '✓';
+      color: #4ade80;
+      font-weight: 700;
+    }
+
+    .mp-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .mp-download-btn {
+      width: min(100%, 320px);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: var(--surface-2);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .mp-download-btn:hover {
+      border-color: rgba(37,99,235,.35);
+      transform: translateY(-2px);
+    }
+
+    .mp-download-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(37,99,235,.16);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .mp-download-label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+
+    .mp-download-name {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 28px 32px;
+      text-align: center;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.12em;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 960px) {
+      .page-hero { grid-template-columns: 1fr; gap: 38px; }
+      .hero-card { padding: 24px; }
+      .mp-hero-actions { justify-content: center; }
+    }
+
+    @media (max-width: 620px) {
+      .navbar { padding: 18px 20px; }
+      .page-hero { padding: 56px 20px 36px; }
+      .nav-links { width: 100%; justify-content: flex-start; }
+      .mp-inner { gap: 36px; }
+      .mp-benefits, .mp-plans { grid-template-columns: 1fr; }
+      .mp-downloads { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark">SH</div>
+      <div class="nav-logo-text"><strong>SoftHeron</strong> / MantPro</div>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link secondary">Inicio</a>
+      <a href="/#contacto" class="nav-link secondary">Contacto</a>
+    </div>
+  </nav>
+
+  <main class="page-hero">
+    <div class="hero-copy">
+      <div class="hero-label">Aplicación en producción</div>
+      <h1 class="hero-title">MantPro<br><em>Gestión de mantenimiento</em></h1>
+      <p>Reportes, presupuestos, cronogramas, inventario y análisis de rentabilidad en una sola plataforma. Web + Android para técnicos, administradores y equipos de mantenimiento.</p>
+      <div class="hero-actions">
+        <a href="https://mantenimiento-app-mu.vercel.app/" target="_blank" class="btn btn-primary">Iniciar sesión</a>
+        <a href="/beta" class="btn btn-secondary">Descargar en Google Play</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>¿Qué incluye MantPro?</h3>
+      <p>Accede a un panel móvil con reportes, tickets, presupuesto de materiales, calendario de trabajo y seguimiento de costos. Todo con respaldo en la nube y conexión entre campo y oficina.</p>
+      <div class="store-link" style="margin-top: 18px;">
+        <span class="store-icon">▶</span>
+        App para Android en Google Play
+      </div>
+    </div>
+  </main>
+
+  <section id="mantpro" class="page-section">
+    <div class="mp-inner">
+      <div>
+        <div class="mp-eyebrow">🔧 MantPro</div>
+        <h2 class="mp-heading">Gestión de mantenimiento<br><em>sin complicaciones</em></h2>
+        <p class="mp-sub">Reportes, presupuestos, cronogramas, inventario y análisis de rentabilidad en una sola plataforma. Web + Android.</p>
+
+        <div class="mp-hero-actions">
+          <a class="mp-btn-primary" href="https://mantenimiento-app-mu.vercel.app/" target="_blank">🚀 Iniciar sesión</a>
+          <a class="mp-btn-primary" href="/beta" style="background:#15803d">▶ Descargar en Google Play</a>
+          <a class="mp-btn-secondary" href="#mantpro-plans">💳 Ver planes</a>
+        </div>
+
+        <img class="mp-screenshot" src="/static/imagenes/mantto_app_dashboard.png" alt="MantPro — Dashboard de gestión de mantenimiento" />
+      </div>
+
+      <div>
+        <p class="mp-benefits-title">Todo lo que necesitas para gestionar tus proyectos</p>
+        <div class="mp-benefits">
+          <div class="mp-benefit-card">
+            <span class="mp-benefit-icon">📋</span>
+            <div class="mp-benefit-name">Reportes profesionales</div>
+            <p class="mp-benefit-desc">Folio automático, hallazgos por severidad, fotos desde cámara y flujo completo de autorización.</p>
+          </div>
+          <div class="mp-benefit-card">
+            <span class="mp-benefit-icon">💰</span>
+            <div class="mp-benefit-name">Presupuestos y PDF</div>
+            <p class="mp-benefit-desc">Genera presupuestos detallados con IVA configurable y expórtalos como PDF profesional al instante.</p>
+          </div>
+          <div class="mp-benefit-card">
+            <span class="mp-benefit-icon">📦</span>
+            <div class="mp-benefit-name">Control de materiales</div>
+            <p class="mp-benefit-desc">Inventario en tiempo real, registro de compras, asignación por proyecto y alertas de stock bajo.</p>
+          </div>
+          <div class="mp-benefit-card">
+            <span class="mp-benefit-icon">📊</span>
+            <div class="mp-benefit-name">Análisis de rentabilidad</div>
+            <p class="mp-benefit-desc">Ingreso vs costos, utilidad bruta, margen de ganancia y estado de cobros por proyecto.</p>
+          </div>
+          <div class="mp-benefit-card">
+            <span class="mp-benefit-icon">📱</span>
+            <div class="mp-benefit-name">Web + Android</div>
+            <p class="mp-benefit-desc">Usa la plataforma desde cualquier navegador o descarga la app en tu dispositivo Android.</p>
+          </div>
+          <div class="mp-benefit-card">
+            <span class="mp-benefit-icon">🌐</span>
+            <div class="mp-benefit-name">Bilingüe ES / EN</div>
+            <p class="mp-benefit-desc">Interfaz completamente traducida. Elige tu idioma al registrarte.</p>
+          </div>
+        </div>
+
+        <div id="mantpro-plans">
+          <p class="mp-plans-title">Planes de membresía</p>
+          <div class="mp-plans">
+            <div class="mp-plan-card">
+              <div class="mp-plan-name">Demo</div>
+              <div class="mp-plan-price">Gratis <span>/ 30 días</span></div>
+              <p class="mp-plan-desc">Sin tarjeta. Sin restricciones.</p>
+              <ul class="mp-plan-features">
+                <li>Acceso completo 30 días</li>
+                <li>Todos los módulos</li>
+                <li>Web + Android</li>
+              </ul>
+            </div>
+
+            <div class="mp-plan-card featured">
+              <div class="mp-plan-badge">MÁS POPULAR</div>
+              <div class="mp-plan-name">Técnico</div>
+              <div class="mp-plan-price">$19.99 <span>USD/mes</span></div>
+              <p class="mp-plan-desc">Para técnicos independientes.</p>
+              <ul class="mp-plan-features">
+                <li>Reportes ilimitados</li>
+                <li>Presupuestos + PDF</li>
+                <li>Almacén de materiales</li>
+                <li>Análisis de rentabilidad</li>
+                <li>App Android</li>
+              </ul>
+            </div>
+
+            <div class="mp-plan-card">
+              <div class="mp-plan-name">Empresarial</div>
+              <div class="mp-plan-price">$39.99 <span>USD/mes</span></div>
+              <p class="mp-plan-desc">Para empresas con equipo de técnicos.</p>
+              <ul class="mp-plan-features">
+                <li>Todo del plan Técnico</li>
+                <li>2 técnicos incluidos</li>
+                <li>Panel de equipo</li>
+                <li>Técnicos extra +$15.99/mes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 SoftHeron — MantPro. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
