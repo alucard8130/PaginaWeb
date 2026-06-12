@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pruebas Beta Testers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050812;
+      --surface: #0a0f1e;
+      --surface-2: #111827;
+      --surface-3: #1f2937;
+      --border: rgba(37, 99, 235, .28);
+      --muted: #9ca3af;
+      --muted-strong: #6b7280;
+      --primary: #2563eb;
+      --primary-strong: #1d4ed8;
+      --text: #f8fafc;
+      --text-strong: #e5e7eb;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(37, 99, 235, .08), transparent 35%), var(--bg);
+      color: var(--text-strong);
+      line-height: 1.6;
+    }
+
+    body, button, input, select {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 24px 24px 0;
+      background: rgba(5, 8, 18, .82);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+    }
+
+    .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .nav-logo-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .nav-logo-text strong {
+      display: block;
+      color: var(--text);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-back,
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .nav-back {
+      color: var(--muted-strong);
+      border-color: transparent;
+    }
+
+    .nav-back:hover {
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .nav-cta:hover {
+      opacity: .95;
+    }
+
+    .nav-hamburger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      position: relative;
+    }
+
+    .nav-hamburger span::before,
+    .nav-hamburger span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .nav-hamburger span::before {
+      top: -6px;
+    }
+
+    .nav-hamburger span::after {
+      top: 6px;
+    }
+
+    .nav-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 18px 24px 24px;
+      background: rgba(5, 8, 18, .96);
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+
+    .nav-mobile.open {
+      display: flex;
+    }
+
+    .nav-mobile a {
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.03);
+    }
+
+    #beta {
+      padding: 96px 24px 120px;
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #beta::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(37,99,235,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .beta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .beta-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 99, 235, .12);
+      border: 1px solid rgba(37, 99, 235, .25);
+      border-radius: 99px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #60a5fa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .beta-eyebrow span {
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 999px;
+      display: inline-block;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(0.82); }
+    }
+
+    .beta-heading {
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 18px;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .beta-heading em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .beta-sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 56px;
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    .beta-apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+
+    .beta-app-card {
+      background: var(--surface-2);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.12);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .beta-app-card:hover {
+      border-color: rgba(37, 99, 235, .5);
+      transform: translateY(-4px);
+      box-shadow: 0 28px 72px rgba(0,0,0,.16);
+    }
+
+    .beta-app-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .beta-app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .beta-app-icon.blue { background: #1e3a5f; }
+    .beta-app-icon.purple { background: #2e1065; }
+
+    .beta-app-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 4px;
+    }
+
+    .beta-app-category {
+      font-size: 11px;
+      color: #8b98a6;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .beta-app-desc {
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0 0 18px;
+    }
+
+    .beta-app-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .beta-tag {
+      background: #1f2937;
+      color: #9ca3af;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .beta-app-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background .2s ease;
+    }
+
+    .btn-play:hover { background: var(--primary-strong); }
+
+    .btn-beta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: transparent;
+      color: #60a5fa;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 11px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(37, 99, 235, .22);
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .btn-beta:hover {
+      background: rgba(37, 99, 235, .12);
+      border-color: rgba(37, 99, 235, .4);
+    }
+
+    .beta-form-panel {
+      display: none;
+      background: var(--surface-2);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 24px;
+      padding: 32px;
+      max-width: 540px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .beta-form-panel.active { display: block; }
+
+    .beta-form-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 4px;
+    }
+
+    .beta-form-app-name {
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 700;
+      margin: 0 0 24px;
+    }
+
+    .beta-form-panel label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted-strong);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .beta-form-panel input,
+    .beta-form-panel select {
+      width: 100%;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .beta-form-panel input:focus,
+    .beta-form-panel select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.08);
+    }
+
+    .beta-form-panel select option {
+      background: #111827;
+      color: var(--text);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity .2s ease;
+    }
+
+    .btn-submit:hover { opacity: .95; }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+
+    .btn-close-form {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #1f2937;
+      color: #9ca3af;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .beta-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .beta-success-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .beta-success h3 {
+      color: #4ade80;
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+
+    .beta-success p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .beta-note {
+      text-align: center;
+      color: var(--muted-strong);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        flex-wrap: wrap;
+      }
+      .nav-right {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      #beta { padding: 72px 18px 80px; }
+      .beta-app-actions { flex-direction: column; }
+      .btn-play, .btn-beta { width: 100%; justify-content: center; }
+      .beta-app-card { padding: 24px; }
+      .beta-form-panel { padding: 28px; }
+      .beta-form-panel input,
+      .beta-form-panel select { padding: 12px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark"><span>SH</span></div>
+      <div class="nav-logo-text"><strong>SoftHeron</strong> / Tecnología</div>
+    </a>
+    <div class="nav-right">
+      <a href="/" class="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 5l7 7-7 7"/></svg>
+        Volver al inicio
+      </a>
+      <a href="/#contacto" class="nav-cta">Iniciar proyecto →</a>
+      <button class="nav-hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="Menú">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  
+
+  <section id="beta">
+    <div class="beta-inner">
+      <div class="beta-eyebrow">
+        <span></span> Programa de Beta Testers GOOGLE PLAY
+      </div>
+      <h2 class="beta-heading">Prueba nuestras apps<br><em>antes que nadie</em></h2>
+      <p class="">Primero. Da click en SER TESTER y envianos por whatsapp tu correo electrónico GMAIL para ser incluido en el programa de beta testers.</p>
+      <p class="">Segundo. Descarga y prueba nuestras aplicaciones Android publicadas en Google Play. Tu feedback nos ayuda a mejorar cada versión.</p>
+      <p>Tercero. En un lapso de 24 a 48 horas recibirás una invitación a tu correo para unirte al programa de beta testers en Google Play. Acepta la invitación y podrás descargar la versión beta de la app desde Google Play.</p>
+
+      <div class="beta-apps">
+        <div class="beta-app-card">
+          <div class="beta-app-header">
+            <div class="beta-app-icon blue">🔧</div>
+            <div>
+              <div class="beta-app-name">MantPro</div>
+              <div class="beta-app-category">Gestión de Mantenimiento</div>
+            </div>
+          </div>
+          <p class="beta-app-desc">Gestiona reportes de mantenimiento, presupuestos, cronogramas, materiales y análisis de rentabilidad. Bilingüe ES/EN.</p>
+          <div class="beta-app-tags">
+            <span class="beta-tag">Reportes</span>
+            <span class="beta-tag">Presupuestos</span>
+            <span class="beta-tag">Almacén</span>
+            <span class="beta-tag">PDF</span>
+            <span class="beta-tag">ES / EN</span>
+          </div>
+          <div class="beta-app-actions">
+            <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.jmeb.mantpro" target="_blank">
+              ▶ Google Play
+            </a>
+            <button class="btn-beta" onclick="openBetaForm('MantPro')">
+            <a class="btn-beta" href="https://wa.me/525548822343?text=Hola%2C%20quiero%20ser%20tester%20de%20MantPro%20%F0%9F%94%A7%20Mi%20Gmail%20es%3A%20" target="_blank">
+  💬 Ser tester
+</a>
+          </button>
+          </div>
+        </div>
+
+        <div class="beta-app-card">
+          <div class="beta-app-header">
+            <div class="beta-app-icon purple">🏢</div>
+            <div>
+              <div class="beta-app-name">GESAC Condóminos</div>
+              <div class="beta-app-category">Gestión Condominal</div>
+            </div>
+          </div>
+          <p class="beta-app-desc">Administra condominios: cobranza, mantenimiento, comunicados y reportes financieros desde tu dispositivo Android.</p>
+          <div class="beta-app-tags">
+            <span class="beta-tag">Cobranza</span>
+            <span class="beta-tag">Mantenimiento</span>
+            <span class="beta-tag">Reportes</span>
+            <span class="beta-tag">Condominios</span>
+          </div>
+          <div class="beta-app-actions">
+            <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.jaimeestrada.condominosapp" target="_blank">
+              ▶ Google Play
+            </a>
+            <button type="button" class="btn-beta" onclick="openBetaForm('GESAC Condóminos')">
+              <a class="btn-beta" href="https://wa.me/525548822343?text=Hola%2C%20quiero%20ser%20tester%20de%20GESAC%20Cond%C3%B3minos%20%F0%9F%8F%A2%20Mi%20Gmail%20es%3A%20" target="_blank">
+  💬 Ser tester
+</a>
+            </button>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

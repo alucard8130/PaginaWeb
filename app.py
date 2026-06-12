@@ -98,6 +98,16 @@ def tec():
 def gestor_condominal():
     return render_template("gestor_administrativo.html")
 
+#beta testers
+@app.route("/beta")
+def beta():
+    return render_template("beta.html")
+
+
+#descargas
+@app.route("/descargas")
+def descargas():
+    return render_template("descarga_app.html")
 
 # Ruta para registro de curso
 # @app.route("/registro_curso", methods=["GET", "POST"])

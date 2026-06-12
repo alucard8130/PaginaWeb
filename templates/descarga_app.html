@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descarga App - SoftHeron</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070910;
+      --surface: #0b111a;
+      --surface-2: #111827;
+      --accent: #c8ff00;
+      --primary: #5b9bff;
+      --text: #e8e6e1;
+      --muted: #8a96a6;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Syne', system-ui, sans-serif;
+      background: radial-gradient(circle at top, rgba(94, 129, 255, 0.12), transparent 30%), var(--bg);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    body, button {
+      font: inherit;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 32px;
+      background: rgba(7,9,16,0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #0a0c10;
+      font-weight: 800;
+    }
+
+    .nav-logo-text {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-logo-text strong { color: var(--text); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-link {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: background .2s, color .2s;
+    }
+
+    .nav-link.primary {
+      background: var(--accent);
+      color: #0a0c10;
+    }
+
+    .nav-link.secondary {
+      color: var(--muted);
+    }
+
+    .nav-link.secondary:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 88px 32px 60px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 0.98;
+      margin: 0 0 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .hero-text {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: transform .2s, opacity .2s, background .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #d4ff26);
+      color: #0a0c10;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-art {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-art-card {
+      padding: 32px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-art-card h3 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .hero-art-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .store-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .store-card h4 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .store-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-weight: 700;
+      transition: background .2s;
+    }
+
+    .store-badge:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .store-icon {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .store-icon svg { width: 18px; height: 18px; }
+
+    .note-box {
+      margin-top: 34px;
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    footer {
+      padding: 28px 32px 36px;
+      text-align: center;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.12em;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 72px 24px 48px; }
+      .download-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .navbar { flex-wrap: wrap; padding: 18px 18px; }
+      .nav-links { width: 100%; justify-content: flex-start; }
+      .hero { padding: 56px 18px 32px; }
+      .store-card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark"><span>SH</span></div>
+      <div class="nav-logo-text"><strong>SoftHeron</strong> / App Store</div>
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link secondary">Inicio</a>
+      <a href="/#contacto" class="nav-link primary">Contacto</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <div class="hero-copy">
+      <div class="hero-label">App en producción</div>
+      <h1 class="hero-title">Descarga nuestra app<br><em>oficial desde App Store</em></h1>
+      <p class="hero-text">
+        Ahora disponible para usuarios de iPhone y iPad. Accede a tu sistema administrativo condominal desde la aplicación oficial, con actualizaciones en tiempo real y soporte móvil.
+      </p>
+   
+    </div>
+
+    <div class="hero-art">
+      <div class="hero-art-card">
+        <h3>App Store</h3>
+        <p>Instala la versión oficial desde Apple App Store. Ideal para administradores y condóminos que quieren gestión segura desde su iPhone.</p>
+        <a href="https://apps.apple.com/app/6756532273" target="_blank" rel="noopener" class="store-badge">
+          <span class="store-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.365 1.43c-.7.855-1.403 1.495-2.38 1.476-.971-.019-1.285-.64-2.38-.64-1.093 0-1.456.631-2.414.65-1.01.018-1.95-.907-2.65-1.77C4.467 0 2.5.708 1.418 2.647c-.74 1.46-.392 3.388.82 4.99.557.773 1.218 1.625 2.096 1.594.829-.03 1.14-.535 2.136-.535.995 0 1.287.535 2.154.516.87-.019 1.37-.819 2.106-1.603.688-.724 1.053-1.43 1.068-1.466-.023-.01-2.04-.78-2.02-3.09.02-2.28 1.87-3.14 1.95-3.18-.24-.346-.75-1.07-.66-1.77.62.03 1.332.44 1.78 1.17.82 1.24.76 3.09.76 3.23 0 .25-.02.45-.04.63z"/>
+              <path d="M20.597 7.507c-.662-1.52-1.758-2.742-3.123-3.524-.973-.525-2.16-.85-3.32-.79-.74.041-1.42.28-2.05.28-.62 0-1.61-.27-2.64-.27-1.08 0-2.19.42-3.1 1.12-1.03.79-1.75 1.95-2.42 3.23-.83 1.56-1.45 3.57-1.14 5.68.24 1.58.9 3.16 1.93 4.16.71.67 1.56 1.23 2.44 1.21.79-.02 1.09-.5 2.95-.5 1.86 0 2.12.5 2.98.48.9-.02 1.75-.56 2.44-1.26 1.03-1.01 1.77-2.45 2-3.99.35-2 .05-3.12-.73-4.61z"/>
+            </svg>
+          </span>
+          GESAC Condominos
+        </a>
+        <a href=""  rel="noopener" class="store-badge">
+          <span class="store-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.365 1.43c-.7.855-1.403 1.495-2.38 1.476-.971-.019-1.285-.64-2.38-.64-1.093 0-1.456.631-2.414.65-1.01.018-1.95-.907-2.65-1.77C4.467 0 2.5.708 1.418 2.647c-.74 1.46-.392 3.388.82 4.99.557.773 1.218 1.625 2.096 1.594.829-.03 1.14-.535 2.136-.535.995 0 1.287.535 2.154.516.87-.019 1.37-.819 2.106-1.603.688-.724 1.053-1.43 1.068-1.466-.023-.01-2.04-.78-2.02-3.09.02-2.28 1.87-3.14 1.95-3.18-.24-.346-.75-1.07-.66-1.77.62.03 1.332.44 1.78 1.17.82 1.24.76 3.09.76 3.23 0 .25-.02.45-.04.63z"/>
+              <path d="M20.597 7.507c-.662-1.52-1.758-2.742-3.123-3.524-.973-.525-2.16-.85-3.32-.79-.74.041-1.42.28-2.05.28-.62 0-1.61-.27-2.64-.27-1.08 0-2.19.42-3.1 1.12-1.03.79-1.75 1.95-2.42 3.23-.83 1.56-1.45 3.57-1.14 5.68.24 1.58.9 3.16 1.93 4.16.71.67 1.56 1.23 2.44 1.21.79-.02 1.09-.5 2.95-.5 1.86 0 2.12.5 2.98.48.9-.02 1.75-.56 2.44-1.26 1.03-1.01 1.77-2.45 2-3.99.35-2 .05-3.12-.73-4.61z"/>
+            </svg>
+          </span>
+          MantPro. Proximamente....
+        </a>
+      </div>
+
+      <div class="hero-art-card">
+        <h3>Android</h3>
+        <p>Si también ofreces una app para Android, aquí puedes colocar el enlace de Google Play y dejar claro que soporta ambos ecosistemas.</p>
+        <a href="/beta"  rel="noopener" class="store-badge">
+          <span class="store-icon">▶</span>
+          MantPro. en Beta
+        </a>
+        <a href="/beta"  rel="noopener" class="store-badge">
+          <span class="store-icon">▶</span>
+          GESAC condominos en Beta
+        </a>
+      </div>
+    </div>
+  </main>
+
+
+
+  <footer>
+    © 2026 SoftHeron — App Store / Producción
+  </footer>
+</body>
+</html>

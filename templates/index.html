@@ -311,6 +311,8 @@
   </a>
   <div class="nav-right">
     <a href="/gestor_administrativo" class="nav-link">Gestor Inmobiliario Condominal</a>
+    <a class="nav-link fw-semibold" href="/beta">Aplicaciones Beta Testers</a>
+    <a href="/descargas" class="nav-link" >Descarga de Aplicaciones</a>
     <a href="/politica_privacidad_gesac_condominos" class="nav-link">Privacidad GESAC</a>
     <a href="#contacto" class="nav-cta">Iniciar proyecto →</a>
     <button class="nav-hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="Menú">
@@ -632,7 +634,430 @@
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.508 5.83L.057 23.25a.75.75 0 00.92.921l5.4-1.43A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.725 9.725 0 01-4.964-1.362l-.355-.212-3.685.975.985-3.6-.232-.372A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
   </svg>
 </a>
+<!-- ══════════════════════════════════════════════════════════════
+     SoftHeron — Sección Beta Testers
+     Pega esta sección completa dentro de tu index.html
+     antes del footer o donde quieras que aparezca
+     ══════════════════════════════════════════════════════════════ -->
 
+<style>
+  /* ── BETA SECTION ─────────────────────────────────────────── */
+  #beta {
+    padding: 96px 24px;
+    background: #0a0f1e;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #beta::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(ellipse, #2563eb18 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .beta-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .beta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #2563eb15;
+    border: 1px solid #2563eb40;
+    border-radius: 99px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .beta-eyebrow span {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 99px;
+    display: inline-block;
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .beta-heading {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: #f9fafb;
+    margin: 0 0 14px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .beta-heading em {
+    font-style: normal;
+    color: #2563eb;
+  }
+
+  .beta-sub {
+    color: #6b7280;
+    font-size: 16px;
+    margin: 0 0 56px;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* Apps grid */
+  .beta-apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .beta-app-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .beta-app-card:hover {
+    border-color: #2563eb60;
+    transform: translateY(-2px);
+  }
+
+  .beta-app-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .beta-app-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .beta-app-icon.blue { background: #1e3a5f; }
+  .beta-app-icon.purple { background: #2e1065; }
+
+  .beta-app-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: #f9fafb;
+    margin: 0 0 3px;
+  }
+
+  .beta-app-category {
+    font-size: 11px;
+    color: #4b5563;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .beta-app-desc {
+    color: #9ca3af;
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+  }
+
+  .beta-app-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .beta-tag {
+    background: #1f2937;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 6px;
+  }
+
+  .beta-app-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn-play {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-play:hover { background: #1d4ed8; }
+
+  .btn-beta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    color: #60a5fa;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #1e3a5f;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-beta:hover {
+    background: #1e3a5f;
+    border-color: #2563eb60;
+  }
+
+  /* Form panel */
+  .beta-form-panel {
+    display: none;
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 540px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .beta-form-panel.active { display: block; }
+
+  .beta-form-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #f9fafb;
+    margin: 0 0 4px;
+  }
+
+  .beta-form-app-name {
+    font-size: 13px;
+    color: #2563eb;
+    font-weight: 700;
+    margin: 0 0 24px;
+  }
+
+  .beta-form-panel label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #6b7280;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .beta-form-panel input,
+  .beta-form-panel select {
+    width: 100%;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #f9fafb;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .beta-form-panel input:focus,
+  .beta-form-panel select:focus {
+    border-color: #2563eb;
+  }
+
+  .beta-form-panel select option {
+    background: #1f2937;
+  }
+
+  .btn-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+  }
+
+  .btn-submit:hover { opacity: 0.9; }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-close-form {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #1f2937;
+    border: none;
+    color: #9ca3af;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .beta-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .beta-success-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .beta-success h3 {
+    color: #4ade80;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 8px;
+  }
+
+  .beta-success p {
+    color: #9ca3af;
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .beta-note {
+    text-align: center;
+    color: #4b5563;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .beta-app-actions { flex-direction: column; }
+    .btn-play, .btn-beta { justify-content: center; }
+  }
+</style>
+
+<!-- ── SECCIÓN BETA ─────────────────────────────────────────── -->
+<section id="beta">
+  <div class="beta-inner">
+
+    <div class="beta-eyebrow">
+      <span></span> Programa de Beta Testers GOOGLE PLAY
+    </div>
+    <h2 class="beta-heading">Prueba nuestras apps<br><em>antes que nadie</em></h2>
+    <p class="">Primero. Da click en SER TESTER y envianos por whatsapp tu correo electrónico GMAIL para ser incluido en el programa de beta testers.</p>
+      <p class="">Segundo. Descarga y prueba nuestras aplicaciones Android publicadas en Google Play. Tu feedback nos ayuda a mejorar cada versión.</p>
+      <p>Tercero. En un lapso de 24 a 48 horas recibirás una invitación a tu correo para unirte al programa de beta testers en Google Play. Acepta la invitación y podrás descargar la versión beta de la app desde Google Play.</p>
+
+    <!-- Apps -->
+    <div class="beta-apps">
+
+      <!-- MantPro -->
+      <div class="beta-app-card">
+        <div class="beta-app-header">
+          <div class="beta-app-icon blue">🔧</div>
+          <div>
+            <div class="beta-app-name">MantPro</div>
+            <div class="beta-app-category">Gestión de Mantenimiento</div>
+          </div>
+        </div>
+        <p class="beta-app-desc">Gestiona reportes de mantenimiento, presupuestos, cronogramas, materiales y análisis de rentabilidad. Bilingüe ES/EN.</p>
+        <div class="beta-app-tags">
+          <span class="beta-tag">Reportes</span>
+          <span class="beta-tag">Presupuestos</span>
+          <span class="beta-tag">Almacén</span>
+          <span class="beta-tag">PDF</span>
+          <span class="beta-tag">ES / EN</span>
+        </div>
+        <div class="beta-app-actions">
+          <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.jmeb.mantpro" target="_blank">
+            ▶ Google Play
+          </a>
+          <button class="btn-beta" onclick="openBetaForm('MantPro')">
+            <a class="btn-beta" href="https://wa.me/525548822343?text=Hola%2C%20quiero%20ser%20tester%20de%20MantPro%20%F0%9F%94%A7%20Mi%20Gmail%20es%3A%20" target="_blank">
+  💬 Ser tester
+</a>
+          </button>
+        </div>
+      </div>
+
+      <!-- GESAC Condóminos -->
+      <div class="beta-app-card">
+        <div class="beta-app-header">
+          <div class="beta-app-icon purple">🏢</div>
+          <div>
+            <div class="beta-app-name">GESAC Condóminos</div>
+            <div class="beta-app-category">Gestión Condominal</div>
+          </div>
+        </div>
+        <p class="beta-app-desc">Administra condominios: cobranza, mantenimiento, comunicados y reportes financieros desde tu dispositivo Android.</p>
+        <div class="beta-app-tags">
+          <span class="beta-tag">Cobranza</span>
+          <span class="beta-tag">Mantenimiento</span>
+          <span class="beta-tag">Reportes</span>
+          <span class="beta-tag">Condominios</span>
+        </div>
+        <div class="beta-app-actions">
+          <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.jaimeestrada.condominosapp" target="_blank">
+            ▶ Google Play
+          </a>
+          <button class="btn-beta" onclick="openBetaForm('GESAC Condóminos')">
+          <a class="btn-beta" href="https://wa.me/525548822343?text=Hola%2C%20quiero%20ser%20tester%20de%20GESAC%20Cond%C3%B3minos%20%F0%9F%8F%A2%20Mi%20Gmail%20es%3A%20" target="_blank">
+  💬 Ser tester
+</a>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    
 <footer>
   <div class="footer-copy">© 2025 Innovación &amp; Tecnología — SoftHeron. JMEB Todos los derechos reservados.</div>
   <a href="/politica_privacidad_gesac_condominos" class="footer-privacy">Política de Privacidad GESAC →</a>
