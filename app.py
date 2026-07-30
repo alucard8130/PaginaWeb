@@ -8,9 +8,16 @@ from datetime import datetime
 from flask import request, jsonify
 from functools import wraps
 from flask import session, redirect, url_for, request
+from psycopg import connect
+from psycopg.rows import dict_row
+
+
+load_dotenv()
+
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 # Ruta para servir ads.txt desde la raíz
@@ -58,30 +65,7 @@ def admin_logout():
     return redirect('/admin/login')
 
 
-# @app.route("/descargas")
-# def descargas():
-#     return render_template("descargas.html")
 
-
-# @app.route("/tec", methods=["GET", "POST"])
-# def index():
-#     if request.method == "POST":
-#         nombre = request.form["nombre"]
-#         email = request.form["email"]
-#         mensaje = request.form["mensaje"]
-
-#         msg = Message(
-#             subject="Información de contacto desde la web",
-#             recipients=["smart8130@hotmail.com"],
-#             body=f"Nombre: {nombre}\nEmail: {email}\nMensaje:\n{mensaje}",
-#         )
-#         try:
-#             mail.send(msg)
-#             flash("¡Mensaje enviado correctamente!", "success")
-#         except Exception as e:
-#             flash("Error al enviar el mensaje. Intenta más tarde.", "danger")
-#         return redirect(url_for("index"))
-#     return render_template("index.html")
 
 
 @app.route("/")
@@ -89,9 +73,7 @@ def tec():
     return render_template("index.html")
 
 
-# @app.route("/redes")
-# def redes():
-#     return render_template("redes.html")
+
 
 
 @app.route("/gestor_administrativo")
@@ -124,67 +106,153 @@ def politica():
 # @app.route("/index")
 # def index_page():
 #     return render_template("index.html")
-TESTIMONIOS_FILE = 'testimonios.json'
+# TESTIMONIOS_FILE = 'testimonios.json'
 
-def leer_testimonios():
-    if not os.path.exists(TESTIMONIOS_FILE):
-        return []
-    with open(TESTIMONIOS_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+# def leer_testimonios():
+#     if not os.path.exists(TESTIMONIOS_FILE):
+#         return []
+#     with open(TESTIMONIOS_FILE, 'r', encoding='utf-8') as f:
+#         return json.load(f)
 
-def guardar_testimonios(data):
-    with open(TESTIMONIOS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+# def guardar_testimonios(data):
+#     with open(TESTIMONIOS_FILE, 'w', encoding='utf-8') as f:
+#         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def get_db_connection():
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL no está configurada. Configúrala para usar Supabase.")
+    return connect(DATABASE_URL, sslmode="require", row_factory=dict_row)
+
+
+def init_testimonios_table():
+    conn = get_db_connection()
+    try:
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS testimonios (
+                    id TEXT PRIMARY KEY,
+                    nombre TEXT NOT NULL,
+                    rol TEXT NOT NULL,
+                    texto TEXT NOT NULL,
+                    fecha TEXT NOT NULL,
+                    aprobado BOOLEAN NOT NULL DEFAULT FALSE
+                    )
+                    """
+                )
+    finally:
+        conn.close()
+
+
+init_testimonios_table()
+
+
 
 # Recibir nuevo testimonio
 @app.route('/testimonios/nuevo', methods=['POST'])
 def nuevo_testimonio():
-    data = request.get_json()
-    testimonios = leer_testimonios()
-    testimonios.append({
-        'id': datetime.now().strftime('%Y%m%d%H%M%S'),
-        'nombre': data.get('nombre', '').strip(),
-        'rol': data.get('rol', '').strip(),
-        'texto': data.get('texto', '').strip(),
-        'fecha': datetime.now().strftime('%d/%m/%Y'),
-        'aprobado': False
-    })
-    guardar_testimonios(testimonios)
-    return jsonify({'ok': True})
+    data = request.get_json() or {}
+    nombre = data.get('nombre', '').strip()
+    rol = data.get('rol', '').strip()
+    texto = data.get('texto', '').strip()
 
-# Panel de moderación — protégelo con una ruta secreta
+    if not nombre or not rol or not texto:
+        return jsonify({'ok': False, 'error': 'Datos incompletos'}), 400
+
+    nuevo_id = datetime.now().strftime('%Y%m%d%H%M%S%f')
+    fecha = datetime.now().strftime('%d/%m/%Y')
+
+    try:
+        conn = get_db_connection()
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    INSERT INTO testimonios (id, nombre, rol, texto, fecha, aprobado)
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    """,
+                    (nuevo_id, nombre, rol, texto, fecha, False)
+                )
+        conn.close()
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)}), 500
+
+
 @app.route('/admin/testimonios')
 @login_required
 def admin_testimonios():
-    testimonios = leer_testimonios()
-    return render_template('admin_testimonios.html', testimonios=testimonios)
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT id, nombre, rol, texto, fecha, aprobado
+                FROM testimonios
+                ORDER BY id DESC
+                """
+            )
+            testimonios = cur.fetchall()
+        conn.close()
+        return render_template('admin_testimonios.html', testimonios=testimonios)
+    except Exception as e:
+        return f"Error cargando testimonios: {e}", 500
 
-# Aprobar
+
 @app.route('/admin/testimonios/aprobar/<id>', methods=['POST'])
 @login_required
 def aprobar_testimonio(id):
-    testimonios = leer_testimonios()
-    for t in testimonios:
-        if t['id'] == id:
-            t['aprobado'] = True
-    guardar_testimonios(testimonios)
-    return jsonify({'ok': True})
+    try:
+        conn = get_db_connection()
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "UPDATE testimonios SET aprobado = TRUE WHERE id = %s",
+                    (id,)
+                )
+        conn.close()
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)}), 500
 
-# Eliminar
+
 @app.route('/admin/testimonios/eliminar/<id>', methods=['POST'])
 @login_required
 def eliminar_testimonio(id):
-    testimonios = leer_testimonios()
-    testimonios = [t for t in testimonios if t['id'] != id]
-    guardar_testimonios(testimonios)
-    return jsonify({'ok': True})
+    try:
+        conn = get_db_connection()
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "DELETE FROM testimonios WHERE id = %s",
+                    (id,)
+                )
+        conn.close()
+        return jsonify({'ok': True})
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)}), 500
 
-# Testimonios aprobados (para cargarlos en la página)
+
 @app.route('/testimonios/aprobados')
 def testimonios_aprobados():
-    testimonios = leer_testimonios()
-    aprobados = [t for t in testimonios if t['aprobado']]
-    return jsonify(aprobados)
+    try:
+        conn = get_db_connection()
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT id, nombre, rol, texto, fecha, aprobado
+                FROM testimonios
+                WHERE aprobado = TRUE
+                ORDER BY id DESC
+                """
+            )
+            aprobados = cur.fetchall()
+        conn.close()
+        return jsonify(aprobados)
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)}), 500
 
 
 if __name__ == "__main__":
