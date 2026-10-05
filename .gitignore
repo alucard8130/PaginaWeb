@@ -1,5 +1,10 @@
 .venv/
 .venv
+venv/
 .env
 __pycache__/
 *.pyc
+
+# graphify: el grafo se comparte, el costo local no
+graphify-out/cost.json
+graphify-out/cache/

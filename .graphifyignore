@@ -1,0 +1,14 @@
+# Entorno virtual: no es codigo del proyecto
+venv/
+.venv/
+
+# Binarios y media pesada: no aportan al grafo y costarian pases semanticos
+static/descargas/
+static/videos/
+static/imagenes/
+*.exe
+*.zip
+*.ppsx
+*.pptx
+*.bmp
+*.ico
